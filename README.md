@@ -1,4 +1,4 @@
-## Agent orchestration system - Axiom
+## Axiom - Agent orchestration system
 
 Axiom is an AI-powered desktop application that brings full-project context to your chat. It is designed for developers who need an AI assistant that deeply understands their codebase, local environment, and daily workflow.
 
@@ -17,5 +17,5 @@ Combines a powerful chat interface with native access to your file system, Git, 
 <img width="2104" height="1232" alt="screenshot" src="https://github.com/user-attachments/assets/2c50c832-338a-40c5-9ddd-68477672f9e6" />
 
 
-### Releases
-https://github.com/uonick/axiom/releases
+### Download
+https://github.com/uonick/axiom/releases/latest
