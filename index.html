@@ -92,14 +92,15 @@
       animation: rise 1s var(--ease) 0.1s forwards;
     }
 
-    .tile::before {
-      content: '';
+    .glow {
       position: absolute;
-      inset: -24px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--violet), transparent 65%);
-      opacity: 0.35;
-      animation: glow 4s ease-in-out infinite;
+      top: 50%;
+      left: 50%;
+      width: 220px;
+      height: 220px;
+      overflow: visible;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
     }
 
     .tile img {
@@ -181,11 +182,6 @@
       to { transform: translate3d(-32vmax, -18vmax, 0) scale(1.2); }
     }
 
-    @keyframes glow {
-      0%, 100% { opacity: 0.2; transform: scale(0.95); }
-      50% { opacity: 0.5; transform: scale(1.05); }
-    }
-
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-4px); }
@@ -209,6 +205,14 @@
 
   <main>
     <div class="tile">
+      <svg class="glow" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <filter id="glow-blur" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="14" />
+          </filter>
+        </defs>
+        <polygon id="glow-shape" fill="#6a4cf5" fill-opacity="0.35" filter="url(#glow-blur)" />
+      </svg>
       <img src="icon-256.png" alt="" width="128" height="128" />
     </div>
 
@@ -222,5 +226,35 @@
       <span>Download beta</span>
     </a>
   </main>
+  <script>
+    const shape = document.getElementById('glow-shape')
+    const corners = [
+      { x: 78, y: 36, ax: 16, ay: 12, fx: 0.55, fy: 0.35, px: 0.4, py: 1.7 },
+      { x: 158, y: 52, ax: 12, ay: 18, fx: 0.4, fy: 0.62, px: 2.1, py: 0.6 },
+      { x: 172, y: 128, ax: 14, ay: 14, fx: 0.7, fy: 0.42, px: 1.2, py: 2.4 },
+      { x: 124, y: 176, ax: 18, ay: 10, fx: 0.33, fy: 0.58, px: 2.8, py: 1.1 },
+      { x: 42, y: 162, ax: 12, ay: 16, fx: 0.48, fy: 0.36, px: 0.9, py: 2.9 },
+      { x: 28, y: 78, ax: 16, ay: 12, fx: 0.62, fy: 0.5, px: 1.8, py: 0.3 },
+    ]
+
+    const draw = (time) => {
+      const seconds = time / 1000
+      shape.setAttribute('points', corners.map((corner) => {
+        const x = corner.x + Math.sin(seconds * corner.fx + corner.px) * corner.ax
+        const y = corner.y + Math.sin(seconds * corner.fy + corner.py) * corner.ay
+        return x.toFixed(1) + ',' + y.toFixed(1)
+      }).join(' '))
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      draw(0)
+    } else {
+      const tick = (time) => {
+        draw(time)
+        requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    }
+  </script>
 </body>
 </html>
