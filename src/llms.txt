@@ -1,0 +1,17 @@
+# Axiom
+
+> Axiom is a local-first desktop application for developers. It gives an AI agent the whole project: chat, files, Git, terminal, and Docker. Code, chat history, and credentials stay on the machine.
+
+Axiom is an agent orchestration system. Four modes cover the work: Agent can read, write, and run sandboxed commands; Plan, Debug, and Ask are narrower, and Ask is read-only. An @ mention pulls in a file, an earlier chat, a rule, a skill, or a multi-step pipeline. Models are interchangeable: major cloud providers, a custom endpoint, local GGUF, or Ollama. The app includes a multi-session terminal, a Git panel (diff, commit, worktrees, sync), and runners for npm, Composer, and Docker Compose. Model Context Protocol (MCP) servers add tools next to the built-in ones.
+
+The current release is a beta, published on GitHub. There is no separate pricing page.
+
+## Product
+
+- [Website](https://getaxiom.ru): product landing page
+- [Download beta](https://github.com/uonick/axiom/releases/latest): latest GitHub release
+- [Repository](https://github.com/uonick/axiom): source and project overview
+
+## Optional
+
+- [README](https://github.com/uonick/axiom/blob/main/README.md): feature list and screenshot
