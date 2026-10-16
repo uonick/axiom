@@ -210,14 +210,7 @@
       line-height: 0.95;
       letter-spacing: -0.06em;
       opacity: 0;
-      animation: rise 1s var(--ease) 0.3s forwards, glitch 6s steps(1) 2.5s infinite;
-    }
-
-    @keyframes glitch {
-      0%, 7%, 100% { text-shadow: none; transform: none; }
-      1% { text-shadow: -2px 0 rgba(255, 77, 109, 0.6), 2px 0 rgba(77, 210, 255, 0.6); transform: translateX(1px) skewX(-3deg); }
-      2% { text-shadow: 2px 0 rgba(255, 77, 109, 0.6), -2px 0 rgba(77, 210, 255, 0.6); transform: translateX(-1px); }
-      3% { text-shadow: -1px 0 rgba(255, 77, 109, 0.5), 1px 0 rgba(77, 210, 255, 0.5); transform: none; }
+      animation: rise 1s var(--ease) 0.3s forwards;
     }
 
     .hero__caption {
@@ -229,14 +222,18 @@
       animation: rise 1s var(--ease) 0.5s forwards;
     }
 
-    .hero__download {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: clamp(1.25rem, 4vh, 2.5rem);
+    }
+
+    .hero__button {
       display: inline-flex;
       align-items: center;
       gap: 0.625rem;
-      margin-top: clamp(1.25rem, 4vh, 2.5rem);
       min-height: 40px;
       padding: 0.5rem 1.25rem;
       border-radius: 100px;
@@ -249,59 +246,12 @@
       font-size: 0.8125rem;
       font-weight: 500;
       letter-spacing: -0.01em;
-      opacity: 0;
-      animation: rise 1s var(--ease) 0.7s forwards;
-      transition: transform 0.15s var(--ease), background-color 0.15s, border-color 0.15s;
+      transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .hero__download::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      width: 300%;
-      background: linear-gradient(
-        90deg,
-        rgba(106, 76, 245, 0),
-        rgba(106, 76, 245, 0.14),
-        rgba(0, 153, 255, 0.11),
-        rgba(255, 85, 119, 0.1),
-        rgba(106, 76, 245, 0.14),
-        rgba(106, 76, 245, 0)
-      );
-      filter: blur(6px);
-      pointer-events: none;
-      will-change: transform;
-      animation: shimmer 7s ease-in-out infinite alternate;
-    }
-
-    .hero__download::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      padding: 1px;
-      border-radius: inherit;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 22%, rgba(255, 255, 255, 0.15) 32%, rgba(255, 255, 255, 0.45) 42%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.45) 58%, rgba(255, 255, 255, 0.15) 68%, rgba(255, 255, 255, 0) 78%) no-repeat 100% 0% / 200% 100%;
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-      opacity: 0;
-      pointer-events: none;
-      animation: border-glow 22s ease-in-out infinite;
-    }
-
-    .hero__download > * {
-      position: relative;
-    }
-
-    .hero__download:hover {
+    .hero__button:hover {
       background: rgba(255, 255, 255, 0.14);
       border-color: rgba(255, 255, 255, 0.22);
-    }
-
-    .hero__download:active {
-      transform: scale(0.96);
     }
 
     .hero__mark {
@@ -342,11 +292,6 @@
       90% { transform: translate3d(-37px, 59px, 0); }
     }
 
-    @keyframes shimmer {
-      from { transform: translate3d(0, 0, 0); }
-      to { transform: translate3d(-66.6%, 0, 0); }
-    }
-
     @property --orbit-angle {
       syntax: '<angle>';
       inherits: false;
@@ -367,19 +312,6 @@
       to { --orbit-hue: 570; }
     }
 
-    @keyframes border-glow {
-      0% { background-position: 100% 0%; opacity: 0; }
-      9% { background-position: 100% 0%; opacity: 1; }
-      18% { background-position: 100% 0%; opacity: 0; }
-      32% { background-position: 0% 0%; opacity: 0; }
-      41% { background-position: 0% 0%; opacity: 1; }
-      50% { background-position: 0% 0%; opacity: 0; }
-      62% { background-position: 50% 0%; opacity: 0; }
-      71% { background-position: 50% 0%; opacity: 1; }
-      80% { background-position: 50% 0%; opacity: 0; }
-      100% { background-position: 100% 0%; opacity: 0; }
-    }
-
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-4px); }
@@ -395,7 +327,6 @@
       .hero__logo,
       .hero__title,
       .hero__caption,
-      .hero__download,
       .shot {
         opacity: 1 !important;
       }
@@ -424,12 +355,20 @@
     <h1 class="hero__title">Axiom</h1>
     <p class="hero__caption">Agent orchestration system</p>
 
-    <a class="hero__download" href="https://github.com/uonick/axiom/releases/latest" target="_blank" rel="noopener noreferrer">
-      <svg class="hero__mark" viewBox="0 0 16 16" aria-hidden="true">
-        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
-      </svg>
-      <span>Download beta</span>
-    </a>
+    <div class="hero__actions">
+      <a class="hero__button" href="https://github.com/uonick/axiom/releases/latest" target="_blank" rel="noopener noreferrer">
+        <svg class="hero__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
+        </svg>
+        <span>Download beta</span>
+      </a>
+      <a class="hero__button" href="https://github.com/uonick/axiom/releases" target="_blank" rel="noopener noreferrer">
+        <svg class="hero__mark" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+        </svg>
+        <span>GitHub</span>
+      </a>
+    </div>
   </main>
 
   <div class="grain" aria-hidden="true"></div>
