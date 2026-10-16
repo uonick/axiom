@@ -8,7 +8,7 @@
     "dev": "bun src/scripts/optimize-images.ts && bun --port=3000 ./src/index.html",
     "start": "bun run dev",
     "optimize": "bun src/scripts/optimize-images.ts",
-    "build": "rm -rf build && bun src/scripts/optimize-images.ts && bun src/scripts/bundle-html.ts && bun src/scripts/minify-html.ts && cp src/llms.txt build/llms.txt"
+    "build": "bun src/scripts/optimize-images.ts && bun src/scripts/bundle-html.ts && bun src/scripts/minify-html.ts && cp src/llms.txt src/CNAME build/"
   },
   "devDependencies": {
     "html-minifier-terser": "^7.2.0"
