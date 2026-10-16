@@ -90,14 +90,40 @@
     .backdrop__blob_violet {
       top: -35vmax;
       left: -25vmax;
-      background: radial-gradient(circle, var(--violet), transparent 65%);
+      background: radial-gradient(
+        closest-side,
+        rgba(106, 76, 245, 1) 0%,
+        rgba(106, 76, 245, 0.97) 10%,
+        rgba(106, 76, 245, 0.88) 20%,
+        rgba(106, 76, 245, 0.74) 30%,
+        rgba(106, 76, 245, 0.58) 40%,
+        rgba(106, 76, 245, 0.42) 50%,
+        rgba(106, 76, 245, 0.28) 60%,
+        rgba(106, 76, 245, 0.16) 70%,
+        rgba(106, 76, 245, 0.08) 80%,
+        rgba(106, 76, 245, 0.025) 90%,
+        rgba(106, 76, 245, 0) 100%
+      );
       animation: drift-a 22s ease-in-out infinite alternate;
     }
 
     .backdrop__blob_orange {
       right: -30vmax;
       bottom: -40vmax;
-      background: radial-gradient(circle, #ff5577, transparent 65%);
+      background: radial-gradient(
+        closest-side,
+        rgba(255, 85, 119, 1) 0%,
+        rgba(255, 85, 119, 0.97) 10%,
+        rgba(255, 85, 119, 0.88) 20%,
+        rgba(255, 85, 119, 0.74) 30%,
+        rgba(255, 85, 119, 0.58) 40%,
+        rgba(255, 85, 119, 0.42) 50%,
+        rgba(255, 85, 119, 0.28) 60%,
+        rgba(255, 85, 119, 0.16) 70%,
+        rgba(255, 85, 119, 0.08) 80%,
+        rgba(255, 85, 119, 0.025) 90%,
+        rgba(255, 85, 119, 0) 100%
+      );
       opacity: 0.12;
       animation: drift-b 28s ease-in-out infinite alternate;
     }
