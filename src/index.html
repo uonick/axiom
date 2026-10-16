@@ -46,6 +46,7 @@
 
     .shot {
       position: relative;
+      z-index: 2;
       grid-row: 2;
       display: flex;
       justify-content: center;
@@ -101,9 +102,28 @@
       animation: drift-b 28s ease-in-out infinite alternate;
     }
 
+    .glass-filter {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .grain {
+      position: fixed;
+      top: -96px;
+      left: -96px;
+      z-index: 1;
+      width: calc(100% + 192px);
+      height: calc(100% + 192px);
+      background-size: 192px 192px;
+      opacity: 0.07;
+      pointer-events: none;
+      will-change: transform;
+      animation: grain 0.5s steps(1) infinite;
+    }
+
     .hero {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       grid-row: 1;
       display: flex;
       flex-direction: column;
@@ -141,7 +161,7 @@
 
     .hero__title {
       margin-top: clamp(1.25rem, 4vh, 3rem);
-      font-size: clamp(2.75rem, min(14vw, 13vh), 8.5rem);
+      font-size: clamp(1.65rem, min(8.4vw, 7.8vh), 5.1rem);
       font-weight: 500;
       line-height: 0.95;
       letter-spacing: -0.06em;
@@ -159,27 +179,68 @@
     }
 
     .hero__download {
+      position: relative;
+      isolation: isolate;
       display: inline-flex;
       align-items: center;
       gap: 0.625rem;
       margin-top: clamp(1.25rem, 4vh, 2.5rem);
-      min-height: 36px;
-      padding: 0.375rem 1rem;
+      min-height: 48px;
+      padding: 0.5rem 1.75rem;
       border-radius: 100px;
-      background: var(--surface-1);
-      box-shadow: 0 0 0 1px var(--hairline);
+      background: rgba(255, 255, 255, 0.07);
+      -webkit-backdrop-filter: blur(8px) saturate(180%) brightness(1.15);
+      backdrop-filter: blur(8px) saturate(180%) brightness(1.15);
+      box-shadow:
+        inset 1.5px 1.5px 0.5px -0.5px rgba(255, 255, 255, 0.6),
+        inset -1.5px -1.5px 0.5px -0.5px rgba(255, 255, 255, 0.32),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 8px 16px -8px rgba(255, 255, 255, 0.28),
+        inset 0 -8px 16px -10px rgba(255, 255, 255, 0.12),
+        0 10px 32px rgba(0, 0, 0, 0.4);
       color: var(--ink);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
       text-decoration: none;
-      font-size: 0.8125rem;
+      font-size: 0.875rem;
       font-weight: 500;
       letter-spacing: -0.01em;
       opacity: 0;
       animation: rise 1s var(--ease) 0.7s forwards;
-      transition: transform 0.15s var(--ease), background-color 0.15s;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background-color 0.25s;
+    }
+
+    .hero__download::before,
+    .hero__download::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    .hero__download::before {
+      inset: 0;
+      padding: 1px;
+      background: linear-gradient(140deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0.6));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    }
+
+    .hero__download::after {
+      top: 3px;
+      right: 18%;
+      left: 18%;
+      height: 38%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    }
+
+    .hero__download > * {
+      position: relative;
+      z-index: 1;
     }
 
     .hero__download:hover {
-      background: #1c1c1c;
+      background-color: rgba(255, 255, 255, 0.12);
     }
 
     .hero__download:active {
@@ -211,6 +272,19 @@
       to { transform: translate3d(-32vmax, -18vmax, 0) scale(1.2); }
     }
 
+    @keyframes grain {
+      0% { transform: translate3d(0, 0, 0); }
+      10% { transform: translate3d(-53px, 31px, 0); }
+      20% { transform: translate3d(41px, -67px, 0); }
+      30% { transform: translate3d(-79px, -23px, 0); }
+      40% { transform: translate3d(63px, 52px, 0); }
+      50% { transform: translate3d(-17px, 83px, 0); }
+      60% { transform: translate3d(71px, -41px, 0); }
+      70% { transform: translate3d(-61px, -71px, 0); }
+      80% { transform: translate3d(29px, 19px, 0); }
+      90% { transform: translate3d(-37px, 59px, 0); }
+    }
+
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-4px); }
@@ -221,12 +295,26 @@
       *::before,
       *::after {
         animation: none !important;
+      }
+
+      .hero__logo,
+      .hero__title,
+      .hero__caption,
+      .hero__download,
+      .shot {
         opacity: 1 !important;
       }
     }
   </style>
 </head>
 <body>
+  <svg class="glass-filter" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="liquid-glass" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+      <feImage id="glass-map" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="map" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="soft" />
+      <feDisplacementMap id="glass-displace" in="soft" in2="map" scale="28" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
   <div class="backdrop" aria-hidden="true">
     <div class="backdrop__blob backdrop__blob_violet"></div>
     <div class="backdrop__blob backdrop__blob_orange"></div>
@@ -256,6 +344,8 @@
     </a>
   </main>
 
+  <div class="grain" aria-hidden="true"></div>
+
   <div class="shot">
     <picture class="shot__frame">
       <source media="(min-width: 800px) and (min-resolution: 2dppx)" srcset=".generated/screenshot-2104.webp" />
@@ -283,6 +373,81 @@
         return x.toFixed(1) + ',' + y.toFixed(1)
       }).join(' '))
     }
+
+    const glassButton = document.querySelector('.hero__download')
+    const glassMap = document.getElementById('glass-map')
+    const glassDisplace = document.getElementById('glass-displace')
+    const glassBezel = 20
+    const glassShift = 14
+
+    const buildGlassMap = (width, height) => {
+      const canvas = document.createElement('canvas')
+      canvas.width = width
+      canvas.height = height
+      const context = canvas.getContext('2d')
+      const image = context.createImageData(width, height)
+      const pixels = image.data
+      const radius = height / 2
+      const halfCore = Math.max(width / 2 - radius, 0)
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const px = x + 0.5 - width / 2
+          const py = y + 0.5 - height / 2
+          const coreX = Math.max(-halfCore, Math.min(halfCore, px))
+          const offsetX = px - coreX
+          const length = Math.hypot(offsetX, py) || 1
+          const depth = radius - length
+          let shiftX = 0
+          let shiftY = 0
+          if (depth >= 0 && depth < glassBezel) {
+            const strength = Math.pow(1 - depth / glassBezel, 2.2)
+            shiftX = (-offsetX / length) * strength
+            shiftY = (-py / length) * strength
+          }
+          const offset = (y * width + x) * 4
+          pixels[offset] = 128 + shiftX * 127
+          pixels[offset + 1] = 128 + shiftY * 127
+          pixels[offset + 2] = 128
+          pixels[offset + 3] = 255
+        }
+      }
+      context.putImageData(image, 0, 0)
+      return canvas.toDataURL('image/png')
+    }
+
+    const applyLiquidGlass = () => {
+      const width = Math.round(glassButton.offsetWidth)
+      const height = Math.round(glassButton.offsetHeight)
+      glassMap.setAttribute('href', buildGlassMap(width, height))
+      glassDisplace.setAttribute('scale', String(glassShift * 2))
+      glassButton.style.backdropFilter = 'url(#liquid-glass) blur(2px) saturate(190%) brightness(1.2)'
+      if (!getComputedStyle(glassButton).backdropFilter.includes('url(')) {
+        glassButton.style.backdropFilter = ''
+      }
+    }
+
+    applyLiquidGlass()
+    new ResizeObserver(applyLiquidGlass).observe(glassButton)
+
+    const buildGrainTile = (size) => {
+      const tile = document.createElement('canvas')
+      tile.width = size
+      tile.height = size
+      const context = tile.getContext('2d')
+      const image = context.createImageData(size, size)
+      const pixels = image.data
+      for (let index = 0; index < pixels.length; index += 4) {
+        const tone = Math.random() * 255
+        pixels[index] = Math.min(255, tone + 40)
+        pixels[index + 1] = tone * 0.75
+        pixels[index + 2] = tone * 0.45
+        pixels[index + 3] = Math.random() * 255
+      }
+      context.putImageData(image, 0, 0)
+      return tile.toDataURL('image/png')
+    }
+
+    document.querySelector('.grain').style.backgroundImage = 'url(' + buildGrainTile(192) + ')'
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       draw(0)
