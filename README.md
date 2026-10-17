@@ -14,8 +14,7 @@ Combines a powerful chat interface with native access to your file system, Git, 
 
 
 ### Screenshots
-<img width="2104" height="1232" alt="screenshot" src="https://github.com/user-attachments/assets/2c50c832-338a-40c5-9ddd-68477672f9e6" />
-
+<img width="1867" height="1155" alt="screenshot" src="https://github.com/user-attachments/assets/e2912cca-643a-44e7-8c41-57e944062230" />
 
 ### Download
 https://github.com/uonick/axiom/releases/latest
