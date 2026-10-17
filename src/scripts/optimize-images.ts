@@ -34,5 +34,18 @@ const optimizeJob = async (job: ImageJob): Promise<void> => {
   )
 }
 
+const OPEN_GRAPH_WIDTH = 1200
+const OPEN_GRAPH_QUALITY = 85
+
+const writeOpenGraphImage = async (): Promise<void> => {
+  const source = await Bun.file(join(root, 'img', 'screenshot.png')).bytes()
+  const image = new Bun.Image(source)
+    .resize(OPEN_GRAPH_WIDTH, undefined, { withoutEnlargement: true })
+    .jpeg({ quality: OPEN_GRAPH_QUALITY })
+  const outputPath = join(OUTPUT_DIRECTORY, 'og-image.jpg')
+  const size = await image.write(outputPath)
+  console.log(`${outputPath}  ${image.width}x${image.height}  ${(size / 1024).toFixed(0)} KB`)
+}
+
 await mkdir(OUTPUT_DIRECTORY, { recursive: true })
-await Promise.all(jobs.map(optimizeJob))
+await Promise.all([...jobs.map(optimizeJob), writeOpenGraphImage()])
