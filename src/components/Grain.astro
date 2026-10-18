@@ -1,0 +1,26 @@
+<div class="grain" aria-hidden="true"></div>
+
+<script>
+  const grain = document.querySelector<HTMLElement>('.grain')
+
+  const buildGrainTile = (size: number): string => {
+    const tile = document.createElement('canvas')
+    tile.width = size
+    tile.height = size
+    const context = tile.getContext('2d')
+    if (!context) return ''
+    const image = context.createImageData(size, size)
+    const pixels = image.data
+    for (let index = 0; index < pixels.length; index += 4) {
+      const tone = Math.random() * 255
+      pixels[index] = Math.min(255, tone + 40)
+      pixels[index + 1] = tone * 0.75
+      pixels[index + 2] = tone * 0.45
+      pixels[index + 3] = Math.random() * 255
+    }
+    context.putImageData(image, 0, 0)
+    return tile.toDataURL('image/png')
+  }
+
+  if (grain) grain.style.backgroundImage = `url(${buildGrainTile(192)})`
+</script>

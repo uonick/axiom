@@ -1,0 +1,25 @@
+---
+import { Picture } from 'astro:assets'
+import screenshot from '../assets/screenshot.png'
+import { translations } from '../i18n/translations'
+
+const text = translations.en
+const russian = translations.ru
+---
+
+<div class="shot">
+  <Picture
+    src={screenshot}
+    alt={text.screenshotAlt}
+    data-ru={russian.screenshotAlt}
+    widths={[640, 1024, 1600, 2104]}
+    sizes="(min-width: 1600px) 1600px, calc(100vw - 3rem)"
+    formats={['avif', 'webp']}
+    fallbackFormat="webp"
+    quality={80}
+    loading="eager"
+    fetchpriority="high"
+    pictureAttributes={{ class: 'shot__frame' }}
+    class="shot__image"
+  />
+</div>

@@ -1,0 +1,14 @@
+---
+type Props = Readonly<{
+  href: string
+  label: string
+  russianLabel?: string
+}>
+
+const { href, label, russianLabel } = Astro.props
+---
+
+<a class="hero__button" href={href} target="_blank" rel="noopener noreferrer">
+  <slot />
+  <span data-ru={russianLabel}>{label}</span>
+</a>

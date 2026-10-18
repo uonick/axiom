@@ -1,0 +1,19 @@
+---
+import { siteConfig } from '../site.config'
+import { translations } from '../i18n/translations'
+import HeroButton from './HeroButton.astro'
+import AppleIcon from './icons/AppleIcon.astro'
+import GithubIcon from './icons/GithubIcon.astro'
+
+const text = translations.en
+const russian = translations.ru
+---
+
+<div class="hero__actions">
+  <HeroButton href={siteConfig.latestReleaseUrl} label={text.downloadBeta} russianLabel={russian.downloadBeta}>
+    <AppleIcon />
+  </HeroButton>
+  <HeroButton href={siteConfig.releasesUrl} label={text.github}>
+    <GithubIcon />
+  </HeroButton>
+</div>

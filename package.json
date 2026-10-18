@@ -1,16 +1,21 @@
 {
   "name": "axiom",
   "version": "0.1.0",
-  "description": "Agent orchestration system",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.0",
+    "sharp": "^0.35.5"
+  },
+  "description": "Axiom — The unified AI workspace for modern team development",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "bun src/scripts/optimize-images.ts && bun --port=3000 ./src/index.html",
-    "start": "bun run dev",
-    "optimize": "bun src/scripts/optimize-images.ts",
-    "build": "bun src/scripts/build.ts"
+    "dev": "astro dev --port 3000",
+    "start": "astro dev --port 3000",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "devDependencies": {
-    "html-minifier-terser": "^7.2.0"
+    "typescript": "6"
   }
 }

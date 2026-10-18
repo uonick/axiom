@@ -1,0 +1,15 @@
+---
+import { translations } from '../i18n/translations'
+import HeroActions from './HeroActions.astro'
+import HeroLogo from './HeroLogo.astro'
+
+const text = translations.en
+const russian = translations.ru
+---
+
+<main class="hero">
+  <HeroLogo />
+  <h1 class="hero__title">Axiom</h1>
+  <p class="hero__caption" data-ru={russian.tagline}>{text.tagline}</p>
+  <HeroActions />
+</main>
