@@ -44,8 +44,6 @@ body {
   align-items: flex-start;
   overflow: hidden;
   padding: 0 1.5rem;
-  opacity: 0;
-  animation: rise 1.2s var(--ease) 0.9s forwards;
 }
 
 .shot__frame {
@@ -317,8 +315,7 @@ body {
 
   .hero__logo,
   .hero__title,
-  .hero__caption,
-  .shot {
+  .hero__caption {
     opacity: 1 !important;
   }
 }

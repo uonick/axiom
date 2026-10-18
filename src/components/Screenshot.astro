@@ -12,13 +12,13 @@ const russian = translations.ru
     src={screenshot}
     alt={text.screenshotAlt}
     data-ru={russian.screenshotAlt}
+    width={2104}
     widths={[640, 1024, 1600, 2104]}
     sizes="(min-width: 1600px) 1600px, calc(100vw - 3rem)"
-    formats={['avif', 'webp']}
+    formats={['webp']}
     fallbackFormat="webp"
     quality={80}
-    loading="eager"
-    fetchpriority="high"
+    priority
     pictureAttributes={{ class: 'shot__frame' }}
     class="shot__image"
   />
