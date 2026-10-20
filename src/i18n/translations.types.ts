@@ -8,7 +8,7 @@ export type Translation = Readonly<{
   shortDescription: string
   keywords: string
   tagline: string
-  downloadBeta: string
+  download: string
   github: string
   screenshotAlt: string
   ogImageAlt: string

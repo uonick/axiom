@@ -3,12 +3,19 @@ type Props = Readonly<{
   href: string
   label: string
   russianLabel?: string
+  download?: boolean
 }>
 
-const { href, label, russianLabel } = Astro.props
+const { href, label, russianLabel, download = false } = Astro.props
 ---
 
-<a class="hero__button" href={href} target="_blank" rel="noopener noreferrer">
+<a
+  class="hero__button"
+  href={href}
+  target={download ? undefined : '_blank'}
+  rel={download ? undefined : 'noopener noreferrer'}
+  data-download={download ? '' : undefined}
+>
   <slot />
   <span data-ru={russianLabel}>{label}</span>
 </a>

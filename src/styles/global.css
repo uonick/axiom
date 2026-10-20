@@ -243,6 +243,17 @@ body {
   border-color: rgba(255, 255, 255, 0.22);
 }
 
+.hero__button [data-platform-icon] {
+  display: none;
+}
+
+.hero__button:not([data-platform]) [data-platform-icon='mac'],
+.hero__button[data-platform='mac'] [data-platform-icon='mac'],
+.hero__button[data-platform='windows'] [data-platform-icon='windows'],
+.hero__button[data-platform='linux'] [data-platform-icon='linux'] {
+  display: inline-flex;
+}
+
 .hero__mark {
   width: 16px;
   height: 16px;
