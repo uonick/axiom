@@ -5,26 +5,36 @@ export const buildStructuredData = ({ siteUrl, canonicalUrl, imageUrl, text }: S
   const organizationId = `${siteUrl}/#organization`
   const websiteId = `${siteUrl}/#website`
   const appId = `${canonicalUrl}#app`
+  const logoUrl = new URL(siteConfig.logo.path, siteUrl).href
+
+  const organization = {
+    '@type': 'Organization',
+    '@id': organizationId,
+    name: siteConfig.name,
+    url: `${siteUrl}/`,
+    logo: {
+      '@type': 'ImageObject',
+      url: logoUrl,
+      width: siteConfig.logo.width,
+      height: siteConfig.logo.height,
+    },
+    sameAs: [siteConfig.repositoryUrl],
+  }
+
+  const website = {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    url: `${siteUrl}/`,
+    name: siteConfig.name,
+    inLanguage: ['en', 'ru'],
+    publisher: { '@id': organizationId },
+  }
 
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      {
-        '@type': 'Organization',
-        '@id': organizationId,
-        name: siteConfig.name,
-        url: `${siteUrl}/`,
-        logo: `${siteUrl}/favicon-32.png`,
-        sameAs: [siteConfig.repositoryUrl],
-      },
-      {
-        '@type': 'WebSite',
-        '@id': websiteId,
-        url: `${siteUrl}/`,
-        name: siteConfig.name,
-        inLanguage: ['en', 'ru'],
-        publisher: { '@id': organizationId },
-      },
+      organization,
+      website,
       {
         '@type': 'WebPage',
         '@id': `${canonicalUrl}#webpage`,

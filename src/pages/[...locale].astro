@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Landing from '../components/Landing.astro'
+
+export function getStaticPaths(): Array<{ params: { locale: 'ru' | undefined } }> {
+  return [
+    { params: { locale: undefined } },
+    { params: { locale: 'ru' } },
+  ]
+}
+---
+
+<Layout>
+  <Landing />
+</Layout>

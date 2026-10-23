@@ -1,30 +1,25 @@
 ---
-import { getImage } from 'astro:assets'
-import { getRelativeLocaleUrl } from 'astro:i18n'
-import screenshot from '../assets/screenshot.png'
 import '../styles/global.css'
-import { localeCodes, resolveLocale, translationFor } from '../i18n/translations'
-import { LOCALE_STORAGE_KEY } from '../lib/locale-preference'
-import { buildStructuredData } from '../lib/structured-data'
+import { siteConfig } from '../site.config'
+import { buildPageMeta } from '../lib/page-meta'
 
-const locale = resolveLocale(Astro.currentLocale)
-const text = translationFor(locale)
-const siteUrl = Astro.site?.origin ?? ''
-const localeHref = (code: (typeof localeCodes)[number]): string => new URL(getRelativeLocaleUrl(code, ''), siteUrl).href
-const canonicalUrl = localeHref(locale)
-const openGraphImage = await getImage({ src: screenshot, width: 1200, format: 'jpg', quality: 85 })
-const openGraphImageUrl = new URL(openGraphImage.src, siteUrl).href
-const openGraphImageHeight = openGraphImage.attributes.height
-
-const structuredData = buildStructuredData({ siteUrl, canonicalUrl, imageUrl: openGraphImageUrl, text })
-const alternates = localeCodes.map((code) => ({ hreflang: code, href: localeHref(code) }))
+const {
+  text,
+  canonicalUrl,
+  defaultLocaleUrl,
+  openGraphImageUrl,
+  openGraphImageHeight,
+  openGraphLocaleAlternates,
+  alternates,
+  structuredData,
+} = await buildPageMeta({ currentLocale: Astro.currentLocale, site: Astro.site })
 ---
 
 <!doctype html>
 <html lang={text.htmlLang}>
   <head>
     <meta charset="UTF-8" />
-    <script is:inline define:vars={{ storageKey: LOCALE_STORAGE_KEY }}>
+    <script is:inline define:vars={{ storageKey: siteConfig.localeStorageKey }}>
       try {
         var saved = localStorage.getItem(storageKey)
         var primary = (navigator.languages && navigator.languages[0]) || navigator.language || ''
@@ -52,9 +47,9 @@ const alternates = localeCodes.map((code) => ({ hreflang: code, href: localeHref
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href={canonicalUrl} />
     {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />)}
-    <link rel="alternate" hreflang="x-default" href={localeHref('en')} />
+    <link rel="alternate" hreflang="x-default" href={defaultLocaleUrl} />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="apple-touch-icon" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Axiom" />
@@ -62,11 +57,7 @@ const alternates = localeCodes.map((code) => ({ hreflang: code, href: localeHref
     <meta property="og:description" content={text.description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content={text.ogLocale} />
-    {
-      localeCodes
-        .filter((code) => code !== locale)
-        .map((code) => <meta property="og:locale:alternate" content={translationFor(code).ogLocale} />)
-    }
+    {openGraphLocaleAlternates.map((content) => <meta property="og:locale:alternate" content={content} />)}
     <meta property="og:image" content={openGraphImageUrl} />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />

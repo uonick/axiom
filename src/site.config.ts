@@ -38,6 +38,7 @@ export const installerAssetSuffix = {
 
 export const siteConfig = {
   name: 'Axiom',
+  localeStorageKey: 'axiom-locale',
   repositoryUrl: REPOSITORY_URL,
   releasesUrl: `${REPOSITORY_URL}/releases`,
   latestReleaseUrl: `${REPOSITORY_URL}/releases/latest`,
@@ -45,5 +46,10 @@ export const siteConfig = {
   application: {
     category: 'DeveloperApplication',
     operatingSystems: 'macOS, Windows, Linux',
+  },
+  logo: {
+    path: '/logo.png',
+    width: 256,
+    height: 256,
   },
 } as const

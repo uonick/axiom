@@ -4,7 +4,6 @@ import { getRelativeLocaleUrl } from 'astro:i18n'
 import icon from '../assets/icon.png'
 import { siteConfig } from '../site.config'
 import { localeLabel, resolveLocale, translationFor } from '../i18n/translations'
-import { LOCALE_STORAGE_KEY } from '../lib/locale-preference'
 import Button from './Button.astro'
 import GithubIcon from './icons/GithubIcon.astro'
 
@@ -50,12 +49,12 @@ const text = translationFor(locale)
 </header>
 
 <script>
-  import { LOCALE_STORAGE_KEY } from '../lib/locale-preference'
+  import { siteConfig } from '../site.config'
 
   const localeSwitch = document.querySelector<HTMLAnchorElement>('[data-locale-switch]')
   localeSwitch?.addEventListener('click', () => {
     const nextLocale = localeSwitch.hreflang
-    if (nextLocale === 'en' || nextLocale === 'ru') localStorage.setItem(LOCALE_STORAGE_KEY, nextLocale)
+    if (nextLocale === 'en' || nextLocale === 'ru') localStorage.setItem(siteConfig.localeStorageKey, nextLocale)
   })
 
   const header = document.querySelector('header')
