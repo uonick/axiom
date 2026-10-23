@@ -1,67 +1,92 @@
 ---
 import { getImage } from 'astro:assets'
+import { getRelativeLocaleUrl } from 'astro:i18n'
 import screenshot from '../assets/screenshot.png'
 import '../styles/global.css'
-import { translations } from '../i18n/translations'
+import { localeCodes, resolveLocale, translationFor } from '../i18n/translations'
+import { LOCALE_STORAGE_KEY } from '../lib/locale-preference'
 import { buildStructuredData } from '../lib/structured-data'
 
-const text = translations.en
-const russian = translations.ru
+const locale = resolveLocale(Astro.currentLocale)
+const text = translationFor(locale)
 const siteUrl = Astro.site?.origin ?? ''
-const canonicalUrl = `${siteUrl}/`
+const localeHref = (code: (typeof localeCodes)[number]): string => new URL(getRelativeLocaleUrl(code, ''), siteUrl).href
+const canonicalUrl = localeHref(locale)
 const openGraphImage = await getImage({ src: screenshot, width: 1200, format: 'jpg', quality: 85 })
 const openGraphImageUrl = new URL(openGraphImage.src, siteUrl).href
 const openGraphImageHeight = openGraphImage.attributes.height
 
 const structuredData = buildStructuredData({ siteUrl, canonicalUrl, imageUrl: openGraphImageUrl, text })
+const alternates = localeCodes.map((code) => ({ hreflang: code, href: localeHref(code) }))
 ---
 
 <!doctype html>
 <html lang={text.htmlLang}>
   <head>
     <meta charset="UTF-8" />
+    <script is:inline define:vars={{ storageKey: LOCALE_STORAGE_KEY }}>
+      try {
+        var saved = localStorage.getItem(storageKey)
+        var primary = (navigator.languages && navigator.languages[0]) || navigator.language || ''
+        var browserLocale = /^ru\b/i.test(primary) ? 'ru' : 'en'
+        var path = location.pathname
+        var isRussianPage = path === '/ru' || path === '/ru/'
+        var isEnglishHome = path === '/'
+        var wantsRussian = saved === 'ru' || (saved !== 'en' && browserLocale === 'ru')
+        if (wantsRussian && isEnglishHome) location.replace('/ru/' + location.search + location.hash)
+        else if (saved === 'en' && isRussianPage) location.replace('/' + location.search + location.hash)
+      } catch (error) {
+        void error
+      }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#090909" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#17181a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
     <meta name="format-detection" content="telephone=no" />
-    <title data-ru={russian.title}>{text.title}</title>
-    <meta name="description" content={text.description} data-ru={russian.description} />
-    <meta name="keywords" content={text.keywords} data-ru={russian.keywords} />
+    <title>{text.title}</title>
+    <meta name="description" content={text.description} />
+    <meta name="keywords" content={text.keywords} />
     <meta name="author" content="Axiom" />
     <meta name="application-name" content="Axiom" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href={canonicalUrl} />
+    {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />)}
+    <link rel="alternate" hreflang="x-default" href={localeHref('en')} />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/favicon-32.png" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Axiom" />
-    <meta property="og:title" content={text.title} data-ru={russian.title} />
-    <meta property="og:description" content={text.description} data-ru={russian.description} />
+    <meta property="og:title" content={text.title} />
+    <meta property="og:description" content={text.description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content={text.ogLocale} />
-    <meta property="og:locale:alternate" content={russian.ogLocale} />
+    {
+      localeCodes
+        .filter((code) => code !== locale)
+        .map((code) => <meta property="og:locale:alternate" content={translationFor(code).ogLocale} />)
+    }
     <meta property="og:image" content={openGraphImageUrl} />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content={String(openGraphImageHeight)} />
-    <meta property="og:image:alt" content={text.ogImageAlt} data-ru={russian.ogImageAlt} />
+    <meta property="og:image:alt" content={text.ogImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={text.title} data-ru={russian.title} />
-    <meta name="twitter:description" content={text.description} data-ru={russian.description} />
+    <meta name="twitter:title" content={text.title} />
+    <meta name="twitter:description" content={text.description} />
     <meta name="twitter:image" content={openGraphImageUrl} />
-    <meta name="twitter:image:alt" content={text.ogImageAlt} data-ru={russian.ogImageAlt} />
+    <meta name="twitter:image:alt" content={text.ogImageAlt} />
 
     <meta name="apple-mobile-web-app-title" content="Axiom" />
     <meta name="mobile-web-app-capable" content="yes" />
 
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
-  <body>
+  <body class="bg-slate-50 font-sans text-slate-900 antialiased dark:bg-surface-page dark:text-ink">
     <slot />
     <script>
-      import '../lib/apply-browser-language'
       import '../lib/apply-download-link'
     </script>
   </body>

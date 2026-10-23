@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import icon from '../assets/icon.png'
+import { siteConfig } from '../site.config'
+import { localeLabel, resolveLocale, translationFor } from '../i18n/translations'
+import { LOCALE_STORAGE_KEY } from '../lib/locale-preference'
+import Button from './Button.astro'
+import GithubIcon from './icons/GithubIcon.astro'
+
+const locale = resolveLocale(Astro.currentLocale)
+const otherLocale = locale === 'ru' ? 'en' : 'ru'
+const text = translationFor(locale)
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-transparent bg-slate-50/70 font-mono backdrop-blur-md transition-colors duration-150 data-scrolled:border-slate-200/60 dark:bg-surface-page/70 dark:data-scrolled:border-line/60"
+>
+  <div class="mx-auto flex h-12 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+    <a class="flex min-h-11 min-w-0 items-center gap-2" href={getRelativeLocaleUrl(locale, '')} aria-label={siteConfig.name}>
+      <Image class="size-6 shrink-0" src={icon} alt="" width={24} height={24} densities={[1, 2]} format="webp" loading="eager" />
+      <span class="truncate text-base font-semibold text-slate-900 dark:text-ink">{siteConfig.name}</span>
+    </a>
+    <div class="flex shrink-0 items-center gap-4">
+      <nav aria-label={text.languageLabel}>
+        <a
+          class="inline-flex h-8 items-center rounded-md px-2 text-xs font-medium text-slate-500 transition-colors duration-150 hover:text-slate-900 dark:text-ink-2 dark:hover:text-ink"
+          href={getRelativeLocaleUrl(otherLocale, '')}
+          hreflang={otherLocale}
+          lang={otherLocale}
+          data-locale-switch
+        >
+          {localeLabel(otherLocale)}
+        </a>
+      </nav>
+      <nav class="flex shrink-0 items-center gap-3" aria-label="Primary">
+        <a
+          class="inline-flex h-8 items-center gap-1.5 rounded-full px-2.5 text-xs font-medium text-slate-600 transition-colors duration-150 hover:bg-slate-200/60 hover:text-slate-900 dark:text-ink-2 dark:hover:bg-surface-hover dark:hover:text-ink"
+          href={siteConfig.repositoryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GithubIcon />
+          <span class="hidden sm:inline">{text.headerGithub}</span>
+        </a>
+        <Button href={siteConfig.latestReleaseUrl} label={text.headerDownload} variant="primary" size="sm" download />
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { LOCALE_STORAGE_KEY } from '../lib/locale-preference'
+
+  const localeSwitch = document.querySelector<HTMLAnchorElement>('[data-locale-switch]')
+  localeSwitch?.addEventListener('click', () => {
+    const nextLocale = localeSwitch.hreflang
+    if (nextLocale === 'en' || nextLocale === 'ru') localStorage.setItem(LOCALE_STORAGE_KEY, nextLocale)
+  })
+
+  const header = document.querySelector('header')
+
+  const syncHeaderScroll = (): void => {
+    header?.toggleAttribute('data-scrolled', window.scrollY > 0)
+  }
+
+  syncHeaderScroll()
+  window.addEventListener('scroll', syncHeaderScroll, { passive: true })
+</script>

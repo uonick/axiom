@@ -1,0 +1,47 @@
+---
+type Props = Readonly<{
+  href: string
+  label: string
+  variant: 'primary' | 'secondary'
+  tone?: 'default' | 'inverted'
+  size?: 'md' | 'sm'
+  download?: boolean
+}>
+
+const { href, label, variant, tone = 'default', size = 'md', download = false } = Astro.props
+
+const variantClasses = {
+  default: {
+    primary:
+      'bg-slate-900 text-white hover:bg-slate-700 dark:bg-ink dark:text-surface-page dark:hover:bg-white',
+    secondary:
+      'border border-slate-200 bg-white text-slate-900 hover:bg-slate-100 dark:border-line dark:bg-surface-field dark:text-ink dark:hover:bg-surface-hover',
+  },
+  inverted: {
+    primary:
+      'bg-white text-slate-900 hover:bg-slate-100 dark:bg-surface-page dark:text-ink dark:hover:bg-surface-canvas',
+    secondary:
+      'border border-white/20 bg-transparent text-white hover:bg-white/10 dark:border-surface-page/20 dark:bg-transparent dark:text-surface-page dark:hover:bg-surface-page/10',
+  },
+}
+
+const sizeClasses = {
+  md: 'min-h-11 gap-2 px-5 text-sm',
+  sm: 'h-8 gap-1.5 px-3 text-xs',
+}
+---
+
+<a
+  class:list={[
+    'inline-flex items-center justify-center rounded-full font-medium transition-colors duration-150 active:scale-95',
+    sizeClasses[size],
+    variantClasses[tone][variant],
+  ]}
+  href={href}
+  target={download ? undefined : '_blank'}
+  rel={download ? undefined : 'noopener noreferrer'}
+  data-download={download ? '' : undefined}
+>
+  <slot />
+  <span>{label}</span>
+</a>

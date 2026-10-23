@@ -1,17 +1,19 @@
 # Axiom
 
-> Axiom is a local-first desktop application for developers. It gives an AI agent the whole project: chat, files, Git, terminal, and Docker. Code, chat history, and credentials stay on the machine.
+> Desktop app for developers. Open a project folder and chat with a model that can see those files, use Git, a terminal and Docker. Chats, settings and provider keys stay on the machine. Beta for macOS, Windows and Linux.
 
-Axiom is an agent orchestration system. Four modes cover the work: Agent can read, write, and run sandboxed commands; Plan, Debug, and Ask are narrower, and Ask is read-only. An @ mention pulls in a file, an earlier chat, a rule, a skill, or a multi-step pipeline. Models are interchangeable: major cloud providers, a custom endpoint, local GGUF, or Ollama. The app includes a multi-session terminal, a Git panel (diff, commit, worktrees, sync), and runners for npm, Composer, and Docker Compose. Model Context Protocol (MCP) servers add tools next to the built-in ones.
+Axiom is not a hosted chat. It runs locally. Agent mode reads and edits project files and runs sandboxed commands. Plan and Ask only read. Debug runs commands and diagnostics and does not change files. @ in the composer inserts a file, an older chat, a rule, a skill, or a pipeline of up to three steps.
 
-The current release is a beta, published on GitHub. There is no separate pricing page.
+Models: Claude, GPT, Gemini, Grok, Qwen, DeepSeek, OpenRouter, Ollama, a GGUF file, or a custom endpoint. A cloud provider receives the prompt for that request, including attached files. A local model does not upload the repo.
 
-## Product
+Installers are GitHub Releases. There is no Axiom account. Cloud model use is billed by the provider you connect.
 
-- [Website](https://getaxiom.ru): product landing page
-- [Download beta](https://github.com/uonick/axiom/releases/latest): latest GitHub release
-- [Repository](https://github.com/uonick/axiom): source and project overview
+Languages: English at https://getaxiom.ru/ and Russian at https://getaxiom.ru/ru/.
 
-## Optional
+## Pages
 
-- [README](https://github.com/uonick/axiom/blob/main/README.md): feature list and screenshot
+- [English](https://getaxiom.ru/): landing page
+- [Русский](https://getaxiom.ru/ru/): та же посадочная по-русски
+- [Pricing](https://getaxiom.ru/pricing.md): beta download, no listed price
+- [Download](https://github.com/uonick/axiom/releases/latest): latest installer
+- [Source](https://github.com/uonick/axiom): repository and README

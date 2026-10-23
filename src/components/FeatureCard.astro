@@ -1,0 +1,26 @@
+---
+import type { FeatureText } from '../i18n/translations.types'
+
+type Props = Readonly<{
+  feature: FeatureText
+}>
+
+const { feature } = Astro.props
+---
+
+<article class="flex flex-col gap-4">
+  <div
+    class="aspect-4/3 w-full overflow-hidden rounded-card border border-slate-200 bg-linear-to-br from-slate-100 to-slate-200 dark:border-transparent dark:from-surface-elevated dark:to-surface-inset dark:shadow-hairline-dark"
+    aria-hidden="true"
+  >
+    <div class="m-4 flex flex-col gap-2 rounded-lg bg-white/70 p-3 shadow-sm dark:bg-surface-field dark:shadow-btn-dark">
+      <div class="h-2 w-1/3 rounded-full bg-slate-300 dark:bg-line-strong"></div>
+      <div class="h-2 w-2/3 rounded-full bg-slate-200 dark:bg-line"></div>
+      <div class="h-2 w-1/2 rounded-full bg-slate-200 dark:bg-line"></div>
+    </div>
+  </div>
+  <div class="flex flex-col gap-1">
+    <h3 class="text-base font-semibold text-slate-900 dark:text-ink">{feature.title}</h3>
+    <p class="text-sm text-slate-500 dark:text-ink-2">{feature.description}</p>
+  </div>
+</article>

@@ -1,11 +1,19 @@
 ---
-import Backdrop from './Backdrop.astro'
-import Grain from './Grain.astro'
-import Hero from './Hero.astro'
-import Screenshot from './Screenshot.astro'
+import SiteHeader from './SiteHeader.astro'
+import HeroSection from './HeroSection.astro'
+import FeaturesSection from './FeaturesSection.astro'
+import ProvidersSection from './ProvidersSection.astro'
+import FaqSection from './FaqSection.astro'
+import CtaSection from './CtaSection.astro'
+import SiteFooter from './SiteFooter.astro'
 ---
 
-<Backdrop />
-<Hero />
-<Grain />
-<Screenshot />
+<SiteHeader />
+<main>
+  <HeroSection />
+  <FeaturesSection />
+  <ProvidersSection />
+  <FaqSection />
+  <CtaSection />
+</main>
+<SiteFooter />

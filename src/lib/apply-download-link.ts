@@ -89,16 +89,18 @@ async function findLatestInstallerUrl(suffix: string): Promise<string | null> {
   return readInstallerUrl(await response.json(), suffix)
 }
 
-const downloadButton = document.querySelector<HTMLAnchorElement>('[data-download]')
-if (downloadButton) {
-  const button = downloadButton
+const downloadButtons = document.querySelectorAll<HTMLAnchorElement>('[data-download]')
+if (downloadButtons.length > 0) {
   void (async () => {
     try {
       const installerKind = await detectInstallerKind()
       if (!installerKind) return
-      button.dataset.platform = desktopPlatform(installerKind)
+      const platform = desktopPlatform(installerKind)
+      downloadButtons.forEach((button) => {
+        button.dataset.platform = platform
+      })
       const installerUrl = await findLatestInstallerUrl(installerAssetSuffix[installerKind])
-      if (installerUrl) button.href = installerUrl
+      if (installerUrl) downloadButtons.forEach((button) => (button.href = installerUrl))
     } catch {
       return
     }

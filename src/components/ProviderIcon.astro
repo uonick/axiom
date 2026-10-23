@@ -1,0 +1,22 @@
+---
+import { providerIcons } from '../lib/provider-icons'
+import type { ProviderKey } from '../site.config'
+
+type Props = Readonly<{ name: ProviderKey }>
+
+const { name } = Astro.props
+const icon = providerIcons[name]
+---
+
+<svg
+  class:list={['size-6', icon.mode === 'fill' ? 'fill-current' : 'fill-none stroke-current']}
+  viewBox="0 0 24 24"
+  stroke-width={icon.mode === 'stroke' ? 2 : undefined}
+  stroke-linecap={icon.mode === 'stroke' ? 'round' : undefined}
+  stroke-linejoin={icon.mode === 'stroke' ? 'round' : undefined}
+  aria-hidden="true"
+>
+  <g transform={'transform' in icon ? icon.transform : undefined}>
+    {icon.paths.map((path) => <path d={path} />)}
+  </g>
+</svg>

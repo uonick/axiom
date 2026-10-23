@@ -1,6 +1,34 @@
 const GITHUB_REPOSITORY = 'uonick/axiom'
 const REPOSITORY_URL = `https://github.com/${GITHUB_REPOSITORY}`
 
+export const providerKeys = [
+  'anthropic',
+  'openai',
+  'grok',
+  'google',
+  'qwen',
+  'deepseek',
+  'openrouter',
+  'ollama',
+  'local',
+  'custom',
+] as const
+
+export type ProviderKey = (typeof providerKeys)[number]
+
+export const providerNames: Readonly<Record<ProviderKey, string>> = {
+  anthropic: 'Anthropic',
+  openai: 'OpenAI',
+  grok: 'Grok',
+  google: 'Google',
+  qwen: 'Qwen',
+  deepseek: 'DeepSeek',
+  openrouter: 'OpenRouter',
+  ollama: 'Ollama',
+  local: 'Local',
+  custom: 'Custom',
+}
+
 export const installerAssetSuffix = {
   macSilicon: 'silicon.dmg',
   macIntel: 'intel.dmg',
@@ -17,7 +45,5 @@ export const siteConfig = {
   application: {
     category: 'DeveloperApplication',
     operatingSystems: 'macOS, Windows, Linux',
-    price: '0',
-    priceCurrency: 'USD',
   },
 } as const

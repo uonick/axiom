@@ -1,0 +1,42 @@
+---
+import { Picture } from 'astro:assets'
+import screenshot from '../assets/screenshot.png'
+import { siteConfig } from '../site.config'
+import { translationFor } from '../i18n/translations'
+import Button from './Button.astro'
+import GithubIcon from './icons/GithubIcon.astro'
+import PlatformIcons from './icons/PlatformIcons.astro'
+
+const text = translationFor(Astro.currentLocale)
+---
+
+<section class="mx-auto max-w-6xl px-4 pb-12 pt-12 sm:px-6 sm:pt-20">
+  <h1 id="hero-title" class="max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl dark:text-ink">
+    {text.heroTitle}
+  </h1>
+  <p id="hero-summary" class="mt-5 max-w-xl text-base text-slate-500 sm:text-lg dark:text-ink-2">
+    {text.heroSubtitle}
+  </p>
+  <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+    <Button href={siteConfig.latestReleaseUrl} label={text.downloadBeta} variant="primary" download>
+      <PlatformIcons />
+    </Button>
+    <Button href={siteConfig.repositoryUrl} label={text.github} variant="secondary">
+      <GithubIcon />
+    </Button>
+  </div>
+  <Picture
+    class="mt-12 block h-auto w-full sm:mt-16"
+    src={screenshot}
+    alt={text.screenshotAlt}
+    width={2104}
+    widths={[640, 1024, 1600, 2104]}
+    sizes="(min-width: 1152px) 1104px, calc(100vw - 2rem)"
+    formats={['webp']}
+    fallbackFormat="webp"
+    quality={80}
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+  />
+</section>

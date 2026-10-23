@@ -1,0 +1,13 @@
+---
+import { translationFor } from '../i18n/translations'
+import FeatureCard from './FeatureCard.astro'
+
+const text = translationFor(Astro.currentLocale)
+---
+
+<section class="below-fold mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+  <h2 class="max-w-2xl text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl dark:text-ink">{text.featuresTitle}</h2>
+  <div class="mt-10 grid gap-10 md:grid-cols-3">
+    {text.features.map((feature) => <FeatureCard feature={feature} />)}
+  </div>
+</section>

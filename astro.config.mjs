@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   site: 'https://getaxiom.ru',
@@ -13,7 +14,25 @@ export default defineConfig({
   image: {
     service: { entrypoint: 'astro/assets/services/sharp', config: { limitInputPixels: false } },
   },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'ru'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          ru: 'ru',
+        },
+      },
+    }),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 })
