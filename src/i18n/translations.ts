@@ -5,12 +5,12 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     htmlLang: 'en',
     ogLocale: 'en_US',
     languageLabel: 'Language',
-    title: 'Axiom: AI chat for the whole repo',
+    title: 'Axiom: the AI that already knows your repo',
     description:
-      'Desktop app for macOS, Windows and Linux. The chat sees your files, Git, terminal and Docker. History and API keys stay on the machine.',
-    shortDescription: 'Desktop AI chat with your repo, Git, terminal and Docker. Local-first.',
+      'Desktop app for macOS, Windows and Linux. Axiom reads your project, works in Git, a terminal and Docker, and runs any model. Chats and API keys stay on your machine.',
+    shortDescription: 'Desktop AI that works in your repo, Git, terminal and Docker. Local-first.',
     keywords: 'Axiom, AI coding assistant, local-first, desktop app, Git, Docker, Ollama, MCP, GGUF',
-    tagline: 'Desktop AI chat with your repo, Git, terminal and Docker.',
+    tagline: 'Desktop AI that works in your repo, Git, terminal and Docker.',
     download: 'Download',
     github: 'GitHub',
     screenshotAlt: 'Axiom on macOS: project chat, Git panel and terminal',
@@ -19,26 +19,26 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       'Local-first desktop app. The chat reads and edits the open project, uses Git, a terminal and Docker, and calls a cloud or local model. Chats and API keys stay on the machine.',
     headerDownload: 'Download',
     headerGithub: 'GitHub',
-    heroTitle: 'The repo is already open in the chat',
+    heroTitle: 'Meet Axiom, the AI that already knows your repo',
     heroSubtitle:
-      'Axiom is a desktop app. It reads the project, works with Git, a terminal and Docker, and keeps the chat history and API keys on your machine.',
+      'Runs on your machine, works in your Git, terminal and Docker, and keeps chats and API keys local. Bring any model.',
     downloadBeta: 'Download beta',
-    featuresTitle: 'What it does',
+    featuresTitle: 'Built for real engineering work',
     features: [
       {
-        title: 'Four modes',
+        title: 'Works in your real environment',
         description:
-          'Agent edits files and runs sandboxed commands. Plan and Ask only read. Debug runs commands and leaves the files alone.',
+          'Axiom reads the project, edits files with precise diffs and runs commands in a sandbox. Git, several terminals, npm, Composer and Docker Compose live in the same window.',
       },
       {
-        title: 'Git, terminal, Docker',
+        title: 'Four modes, one chat',
         description:
-          'Several terminal sessions. Diff, commit, worktrees and sync. npm, Composer and Docker Compose sit in the same window.',
+          'Agent edits and runs. Plan and Ask only read. Debug runs diagnostics and leaves your files alone. Type @ to pull in a file, an old chat, a rule, a skill or a pipeline.',
       },
       {
-        title: 'It stays put',
+        title: 'Stays on your machine',
         description:
-          'Chats, settings and provider keys are stored locally. The beta is a GitHub Release. No Axiom account.',
+          'Chats, settings and provider keys are stored locally. No Axiom account, no cloud workspace. With Ollama or a GGUF file the repo never leaves the disk.',
       },
     ],
     faqTitle: 'Questions',
@@ -64,7 +64,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
           'It reads and edits project files and runs sandboxed commands. Plan and Ask only read. Debug runs commands and diagnostics and does not change files. @ in the composer inserts a file, an older chat, a rule, a skill, or a pipeline of up to three steps.',
       },
     ],
-    providersTitle: 'Your model, your key',
+    providersTitle: 'Bring your own model and key',
     providersSubtitle:
       'Anthropic, OpenAI, Google, xAI, Qwen, DeepSeek, OpenRouter, Ollama, a GGUF file, or any compatible endpoint. Switch in the chat.',
     providerCaptions: {
@@ -79,8 +79,8 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       local: 'GGUF on disk',
       custom: 'Your endpoint',
     },
-    ctaTitle: 'Download the beta',
-    ctaSubtitle: 'macOS, Windows and Linux. Source is on GitHub.',
+    ctaTitle: 'Stop pasting code into chats',
+    ctaSubtitle: 'Download the beta for macOS, Windows and Linux. Source is on GitHub.',
     footerGroups: { product: 'Product', resources: 'Resources', legal: 'Legal' },
     footerLinks: { releases: 'Releases', source: 'Source code', issues: 'Issues', license: 'License' },
     footerRights: 'All rights reserved.',
@@ -89,12 +89,12 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     htmlLang: 'ru',
     ogLocale: 'ru_RU',
     languageLabel: 'Язык',
-    title: 'Axiom: чат с ИИ по всему репозиторию',
+    title: 'Axiom: ИИ, который уже знает ваш репозиторий',
     description:
-      'Десктоп для macOS, Windows и Linux. Чат видит файлы, Git, терминал и Docker. История и ключи API остаются на компьютере.',
-    shortDescription: 'Десктопный чат с ИИ по репозиторию, Git, терминалу и Docker. Данные на вашей машине.',
+      'Десктоп для macOS, Windows и Linux. Axiom читает проект, работает с Git, терминалом и Docker и подключает любую модель. Чаты и ключи API остаются на вашем компьютере.',
+    shortDescription: 'Десктопный ИИ, который работает в репозитории, Git, терминале и Docker. Данные на вашей машине.',
     keywords: 'Axiom, ИИ для кода, десктоп, Git, Docker, Ollama, MCP, GGUF, локально',
-    tagline: 'Десктопный чат с ИИ по репозиторию, Git, терминалу и Docker.',
+    tagline: 'Десктопный ИИ, который работает в репозитории, Git, терминале и Docker.',
     download: 'Скачать',
     github: 'GitHub',
     screenshotAlt: 'Axiom на macOS: чат проекта, панель Git и терминал',
@@ -103,26 +103,26 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       'Десктопное приложение. Чат читает и правит открытый проект, работает с Git, терминалом и Docker, вызывает облачную или локальную модель. Чаты и ключи API остаются на компьютере.',
     headerDownload: 'Скачать',
     headerGithub: 'GitHub',
-    heroTitle: 'Репозиторий уже открыт в чате',
+    heroTitle: 'Знакомьтесь, Axiom: ИИ, который уже знает ваш репозиторий',
     heroSubtitle:
-      'Axiom, десктопное приложение. Читает проект, работает с Git, терминалом и Docker. История чата и ключи API остаются на вашем компьютере.',
+      'Работает на вашей машине, в вашем Git, терминале и Docker. Чаты и ключи API остаются локально. Модель берите любую.',
     downloadBeta: 'Скачать бету',
-    featuresTitle: 'Что умеет',
+    featuresTitle: 'Для настоящей инженерной работы',
     features: [
       {
-        title: 'Четыре режима',
+        title: 'Работает в вашем окружении',
         description:
-          'Agent правит файлы и запускает команды в песочнице. Plan и Ask только читают. Debug гоняет команды и файлы не трогает.',
+          'Axiom читает проект, правит файлы точечными диффами и запускает команды в песочнице. Git, несколько терминалов, npm, Composer и Docker Compose в том же окне.',
       },
       {
-        title: 'Git, терминал, Docker',
+        title: 'Четыре режима, один чат',
         description:
-          'Несколько сессий терминала. Diff, коммит, worktree и sync. В том же окне npm, Composer и Docker Compose.',
+          'Agent правит и запускает. Plan и Ask только читают. Debug гоняет диагностику и файлы не трогает. @ подставляет файл, старый чат, правило, навык или пайплайн.',
       },
       {
         title: 'Остаётся у вас',
         description:
-          'Чаты, настройки и ключи провайдеров хранятся локально. Бета качается с GitHub Releases. Аккаунт Axiom не нужен.',
+          'Чаты, настройки и ключи провайдеров хранятся локально. Аккаунт Axiom не нужен, облачного рабочего места нет. С Ollama или файлом GGUF репозиторий не покидает диск.',
       },
     ],
     faqTitle: 'Вопросы',
@@ -163,8 +163,8 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       local: 'GGUF на диске',
       custom: 'Свой endpoint',
     },
-    ctaTitle: 'Скачайте бету',
-    ctaSubtitle: 'macOS, Windows и Linux. Исходники на GitHub.',
+    ctaTitle: 'Хватит копировать код в чат',
+    ctaSubtitle: 'Скачайте бету для macOS, Windows и Linux. Исходники на GitHub.',
     footerGroups: { product: 'Продукт', resources: 'Материалы', legal: 'Документы' },
     footerLinks: { releases: 'Релизы', source: 'Исходный код', issues: 'Баги', license: 'Лицензия' },
     footerRights: 'Все права защищены.',
