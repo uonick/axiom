@@ -18,7 +18,7 @@ const { item, kind, mark, index, badge, revealIndex } = Astro.props
 <article class="flex flex-col gap-4" data-reveal style={`--reveal-index: ${revealIndex}`}>
   <div
     class:list={[
-      'relative aspect-4/3 w-full overflow-hidden rounded-card bg-gradient-to-br',
+      'relative aspect-4/3 w-full overflow-hidden rounded-card bg-linear-to-br',
       kind === 'free' && 'from-emerald-50 to-sky-100 dark:from-emerald-500/20 dark:to-sky-500/15',
       kind === 'subscription' && 'from-violet-100 to-rose-50 dark:from-violet-500/25 dark:to-rose-500/15',
       kind === 'keys' && 'from-amber-50 to-violet-100 dark:from-amber-500/20 dark:to-violet-500/20',

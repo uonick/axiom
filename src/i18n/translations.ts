@@ -65,9 +65,9 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       },
     ],
     usageEyebrow: 'Ways to use',
-    usageTitle: 'Pick how you use Axiom',
+    usageTitle: 'Pick how you use it',
     usageSubtitle: 'From a solo setup on your laptop to a whole company on one config',
-    usageSoonBadge: 'In development',
+    usageSoonBadge: 'WIP',
     usage: [
       {
         title: 'Free',
@@ -122,7 +122,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       },
     ],
     roadmapTitle: 'Roadmap',
-    roadmapBadge: 'In development',
+    roadmapBadge: 'WIP',
     roadmap: [
       {
         title: 'Team sync',
@@ -210,7 +210,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       },
     ],
     usageEyebrow: 'Как использовать',
-    usageTitle: 'Выбирайте, как использовать Axiom',
+    usageTitle: 'Выбирайте, как использовать',
     usageSubtitle: 'От личной установки на ноутбуке до целой компании с единой настройкой. Платить удобно, ведь все цены в рублях',
     usageSoonBadge: 'В разработке',
     usage: [
@@ -225,7 +225,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       {
         title: 'Корпоративный',
         description:
-          'Автоподгрузка skills, MCP, моделей и настроек компании. Сотрудник открывает приложение, и всё уже настроено, а руководитель управляет учётными записями',
+          'Skills, MCP, моделей и настроек компании подгружаются автоматически. Сотрудник открывает приложение, и всё уже настроено, а руководитель управляет учётными записями',
       },
       {
         title: 'Подписка',

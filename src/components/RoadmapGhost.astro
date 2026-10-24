@@ -1,4 +1,8 @@
 ---
+import RoadmapGhostControls from './roadmap-ghost/RoadmapGhostControls.astro'
+import RoadmapGhostProjects from './roadmap-ghost/RoadmapGhostProjects.astro'
+import RoadmapGhostRules from './roadmap-ghost/RoadmapGhostRules.astro'
+
 type Props = Readonly<{
   kind: 'projects' | 'rules' | 'controls'
 }>
@@ -13,77 +17,9 @@ const { kind } = Astro.props
       <span class="size-2 rounded-full bg-amber-400"></span>
       <span class="size-2 rounded-full bg-emerald-400"></span>
     </div>
-    {kind === 'projects' && (
-      <div class="flex min-h-0 flex-1 border-t border-indigo-100 dark:border-line">
-        <div class="flex w-2/5 flex-col gap-1.5 border-r border-indigo-100 p-2 dark:border-line">
-          <span class="flex h-5 items-center gap-1.5 rounded-md bg-indigo-100 px-1.5 dark:bg-violet-400/20">
-            <span class="size-3 shrink-0 rounded-sm bg-indigo-400"></span>
-            <span class="h-1.5 min-w-0 flex-1 rounded-full bg-indigo-300"></span>
-          </span>
-          <span class="flex h-5 items-center gap-1.5 px-1.5">
-            <span class="size-3 shrink-0 rounded-sm bg-indigo-300 dark:bg-violet-400/40"></span>
-            <span class="h-1.5 w-3/4 rounded-full bg-slate-200 dark:bg-line-strong"></span>
-          </span>
-          <span class="flex h-5 items-center gap-1.5 px-1.5">
-            <span class="size-3 shrink-0 rounded-sm bg-indigo-300 dark:bg-violet-400/40"></span>
-            <span class="h-1.5 w-2/3 rounded-full bg-slate-200 dark:bg-line-strong"></span>
-          </span>
-          <span class="flex h-5 items-center gap-1.5 px-1.5">
-            <span class="size-3 shrink-0 rounded-sm bg-indigo-300 dark:bg-violet-400/40"></span>
-            <span class="h-1.5 w-4/5 rounded-full bg-slate-200 dark:bg-line-strong"></span>
-          </span>
-        </div>
-        <div class="flex min-w-0 flex-1 flex-col gap-2 p-2.5">
-          <span class="h-2 w-1/2 rounded-full bg-slate-300 dark:bg-ink-3"></span>
-          <span class="h-1.5 w-full rounded-full bg-slate-200 dark:bg-surface-field"></span>
-          <span class="h-1.5 w-4/5 rounded-full bg-slate-200 dark:bg-surface-field"></span>
-          <span class="h-1.5 w-2/3 rounded-full bg-slate-200 dark:bg-surface-field"></span>
-        </div>
-      </div>
-    )}
-    {kind === 'rules' && (
-      <div class="flex min-h-0 flex-1 flex-col gap-2 border-t border-sky-100 p-2.5 dark:border-line">
-        <div class="flex gap-1.5">
-          <span class="h-5 w-14 rounded-full bg-violet-100 dark:bg-violet-400/25"></span>
-          <span class="h-5 w-10 rounded-full bg-sky-100 dark:bg-sky-400/25"></span>
-          <span class="h-5 w-12 rounded-full bg-emerald-100 dark:bg-emerald-400/25"></span>
-        </div>
-        <span class="flex h-6 items-center justify-between rounded-md bg-violet-50 px-2 dark:bg-violet-400/15">
-          <span class="h-1.5 w-1/2 rounded-full bg-violet-300"></span>
-          <span class="h-3 w-5 rounded-full bg-violet-400"></span>
-        </span>
-        <span class="flex h-6 items-center justify-between rounded-md px-2">
-          <span class="h-1.5 w-2/5 rounded-full bg-slate-200 dark:bg-line-strong"></span>
-          <span class="h-3 w-5 rounded-full bg-sky-300"></span>
-        </span>
-        <span class="flex h-6 items-center justify-between rounded-md px-2">
-          <span class="h-1.5 w-1/2 rounded-full bg-slate-200 dark:bg-line-strong"></span>
-          <span class="h-3 w-5 rounded-full bg-indigo-300"></span>
-        </span>
-      </div>
-    )}
-    {kind === 'controls' && (
-      <div class="flex min-h-0 flex-1 flex-col gap-2.5 border-t border-emerald-100 p-2.5 dark:border-line">
-        <span class="flex flex-col gap-1">
-          <span class="h-1.5 w-14 rounded-full bg-violet-300"></span>
-          <span class="h-1.5 overflow-hidden rounded-full bg-violet-100 dark:bg-violet-400/20">
-            <span class="block h-full w-2/3 rounded-full bg-violet-400"></span>
-          </span>
-        </span>
-        <span class="flex flex-col gap-1">
-          <span class="h-1.5 w-10 rounded-full bg-sky-300"></span>
-          <span class="h-1.5 overflow-hidden rounded-full bg-sky-100 dark:bg-sky-400/20">
-            <span class="block h-full w-1/2 rounded-full bg-sky-400"></span>
-          </span>
-        </span>
-        <span class="flex flex-col gap-1">
-          <span class="h-1.5 w-16 rounded-full bg-emerald-300"></span>
-          <span class="h-1.5 overflow-hidden rounded-full bg-emerald-100 dark:bg-emerald-400/20">
-            <span class="block h-full w-4/5 rounded-full bg-emerald-400"></span>
-          </span>
-        </span>
-      </div>
-    )}
+    {kind === 'projects' && <RoadmapGhostProjects />}
+    {kind === 'rules' && <RoadmapGhostRules />}
+    {kind === 'controls' && <RoadmapGhostControls />}
   </div>
   <div class="absolute bottom-3 right-3 z-10 flex w-40 items-center gap-2.5 rounded-2xl bg-white p-2.5 shadow-xs dark:bg-surface-elevated dark:shadow-hairline-dark">
     <span
