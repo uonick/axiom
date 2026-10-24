@@ -22,7 +22,7 @@ const text = translationFor(Astro.currentLocale)
       <Button href={siteConfig.latestReleaseUrl} label={text.download} badge={text.betaBadge} variant="primary" tone="inverted" size="lg" download>
         <PlatformIcons />
       </Button>
-      <Button href={siteConfig.repositoryUrl} label={text.github} variant="secondary" tone="inverted">
+      <Button href={siteConfig.releasesUrl} label={text.github} variant="secondary" tone="inverted">
         <GithubIcon />
       </Button>
     </div>

@@ -31,7 +31,7 @@ const text = translationFor(Astro.currentLocale)
     <Button href={siteConfig.latestReleaseUrl} label={text.download} badge={text.betaBadge} variant="primary" size="lg" download revealIndex={2}>
       <PlatformIcons />
     </Button>
-    <Button href={siteConfig.repositoryUrl} label={text.github} variant="secondary" revealIndex={3}>
+    <Button href={siteConfig.releasesUrl} label={text.github} variant="secondary" revealIndex={3}>
       <GithubIcon />
     </Button>
   </div>
