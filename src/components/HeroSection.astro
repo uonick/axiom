@@ -26,13 +26,13 @@ const text = translationFor(Astro.currentLocale)
     </Button>
   </div>
   <Picture
-    class="mt-12 block h-auto w-full sm:mt-16"
+    class="hero-shot mt-12 block h-auto w-full sm:mt-16"
     src={screenshot}
     alt={text.screenshotAlt}
     width={2104}
     widths={[640, 1024, 1600, 2104]}
     sizes="(min-width: 1152px) 1104px, calc(100vw - 2rem)"
-    formats={['avif', 'webp']}
+    formats={['webp']}
     fallbackFormat="webp"
     quality={80}
     loading="eager"

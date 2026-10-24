@@ -53,6 +53,10 @@
   display: inline-flex;
 }
 
+.hero-shot {
+  filter: drop-shadow(0 2px 6px rgb(15 23 42 / 0.1)) drop-shadow(0 18px 40px rgb(15 23 42 / 0.16));
+}
+
 .below-fold {
   content-visibility: auto;
   contain-intrinsic-size: auto 40rem;
