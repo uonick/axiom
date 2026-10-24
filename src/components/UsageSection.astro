@@ -28,7 +28,7 @@ const cards = [
     {text.usage.map((item, index) => {
       const card = cards[index]
       if (card === undefined) return null
-      return <UsageCard item={item} kind={card.kind} mark={card.mark} index={index} badge={card.kind === 'subscription' ? text.usageSoonBadge : undefined} revealIndex={index + 3} />
+      return <UsageCard item={item} kind={card.kind} mark={card.mark} index={index} badge={card.kind === 'corporate' || card.kind === 'subscription' ? text.usageSoonBadge : undefined} revealIndex={index + 3} />
     })}
   </div>
 </section>
