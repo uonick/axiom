@@ -64,6 +64,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
           'It reads and edits project files and runs sandboxed commands. Plan and Ask only read. Debug runs commands and diagnostics and does not change files. @ in the composer inserts a file, an older chat, a rule, a skill, or a pipeline of up to three steps.',
       },
     ],
+    providersEyebrow: 'Flexible AI',
     providersTitle: 'Bring your own model and key',
     providersSubtitle:
       'Anthropic, OpenAI, Google, xAI, Qwen, DeepSeek, OpenRouter, Ollama, a GGUF file, or any compatible endpoint. Switch easily during the conversation.',
@@ -184,6 +185,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
           'Читает и правит файлы проекта, запускает команды в песочнице. Удаление файла, команда на хосте и push ждут вашего подтверждения. Plan и Ask только читают. Debug запускает команды и диагностику, файлы не меняет. @ в поле ввода подставляет файл, старый чат, правило, навык или пайплайн до трёх шагов.',
       },
     ],
+    providersEyebrow: 'Гибкий ИИ',
     providersTitle: 'Своя модель, свой ключ',
     providersSubtitle:
       'Anthropic, OpenAI, Google, xAI, Qwen, DeepSeek, OpenRouter, Ollama, файл GGUF или свой endpoint. Легко поменять прямо во время диалога.',

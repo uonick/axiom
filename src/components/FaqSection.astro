@@ -1,5 +1,6 @@
 ---
 import { translationFor } from '../i18n/translations'
+import NumberedPoint from './NumberedPoint.astro'
 
 const text = translationFor(Astro.currentLocale)
 ---
@@ -12,8 +13,7 @@ const text = translationFor(Astro.currentLocale)
     {
       text.faq.map((item, index) => (
         <div class="border-t border-slate-200 py-5 dark:border-line" data-reveal style={`--reveal-index: ${index + 1}`}>
-          <h3 class="text-base font-semibold text-slate-900 dark:text-ink">{item.question}</h3>
-          <p class="mt-2 max-w-2xl text-sm text-slate-500 dark:text-ink-2">{item.answer}</p>
+          <NumberedPoint index={index} title={item.question} description={item.answer} />
         </div>
       ))
     }

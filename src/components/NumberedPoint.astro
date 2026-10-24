@@ -1,0 +1,74 @@
+---
+type Mark = 'team' | 'code' | 'bolt' | 'spark' | 'sliders' | 'layers' | 'chat' | 'cube'
+
+type Props = Readonly<{
+  index: number
+  title: string
+  description: string
+  mark?: Mark
+}>
+
+const { index, title, description, mark } = Astro.props
+const label = String(index + 1).padStart(2, '0')
+---
+
+<div class="flex items-start gap-2.5">
+  <span
+    class="flex size-7 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold leading-none text-indigo-500 tabular-nums dark:bg-indigo-400/20 dark:text-indigo-200"
+    aria-hidden="true"
+  >
+    {mark === 'team' && (
+      <svg class="size-3.5" viewBox="0 0 24 24" fill="none">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.75"></circle>
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    )}
+    {mark === 'code' && (
+      <svg class="size-3.5" viewBox="0 0 24 24" fill="none">
+        <path d="m18 16 4-4-4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="m6 8-4 4 4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="m14.5 4-5 16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    )}
+    {mark === 'bolt' && (
+      <svg class="size-3.5" viewBox="0 0 24 24" fill="none">
+        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    )}
+    {mark === 'spark' && (
+      <svg class="size-3.5" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M8 .4 10.1 5.9 15.6 8 10.1 10.1 8 15.6 5.9 10.1.4 8 5.9 5.9 8 .4Z"></path>
+      </svg>
+    )}
+    {mark === 'sliders' && (
+      <svg class="size-3.5" viewBox="0 0 24 24" fill="none">
+        <path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+      </svg>
+    )}
+    {mark === 'layers' && (
+      <svg class="size-3.5" viewBox="0 0 24 24" fill="none">
+        <path d="m12 2 10 5-10 5L2 7l10-5Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"></path>
+        <path d="m2 12 10 5 10-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="m2 17 10 5 10-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    )}
+    {mark === 'chat' && (
+      <svg class="size-3.5" viewBox="0 0 24 24" fill="none">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"></path>
+      </svg>
+    )}
+    {mark === 'cube' && (
+      <svg class="size-3.5" viewBox="0 0 24 24" fill="none">
+        <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"></path>
+        <path d="m3.3 7 8.7 5 8.7-5M12 22V12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    )}
+    {mark === undefined && label}
+  </span>
+  <div class="flex min-w-0 flex-col gap-1">
+    <h3 class="text-base font-semibold text-slate-900 dark:text-ink">{title}</h3>
+    <p class="max-w-2xl text-sm text-slate-500 dark:text-ink-2">{description}</p>
+  </div>
+</div>

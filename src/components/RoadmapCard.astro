@@ -1,26 +1,33 @@
 ---
 import type { RoadmapText } from '../i18n/translations.types'
+import NumberedPoint from './NumberedPoint.astro'
 import RoadmapGhost from './RoadmapGhost.astro'
 
 type Props = Readonly<{
   item: RoadmapText
   badge: string
   kind: 'projects' | 'rules' | 'controls'
+  index: number
   revealIndex: number
+  mark: 'team' | 'spark' | 'sliders'
 }>
 
-const { item, badge, kind, revealIndex } = Astro.props
+const { item, badge, kind, index, revealIndex, mark } = Astro.props
 ---
 
 <article class="flex flex-col gap-4" data-reveal style={`--reveal-index: ${revealIndex}`}>
-  <div class="relative aspect-4/3 w-full overflow-hidden rounded-card bg-slate-100 shadow-well dark:bg-surface-elevated dark:shadow-well-dark">
+  <div
+    class:list={[
+      'relative aspect-4/3 w-full overflow-hidden rounded-card bg-gradient-to-br',
+      kind === 'projects' && 'from-violet-100 to-sky-50 dark:from-violet-500/25 dark:to-sky-500/15',
+      kind === 'rules' && 'from-sky-100 to-indigo-50 dark:from-sky-500/25 dark:to-indigo-500/15',
+      kind === 'controls' && 'from-emerald-50 to-violet-100 dark:from-emerald-500/20 dark:to-violet-500/20',
+    ]}
+  >
     <RoadmapGhost kind={kind} />
-    <span class="absolute left-1/2 top-1/2 z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center rounded-full bg-white px-2.5 py-1 text-xs font-medium text-slate-900 shadow-sm dark:bg-surface-field dark:text-ink dark:shadow-btn-dark">
+    <span class="absolute left-1/2 top-3 z-20 inline-flex -translate-x-1/2 items-center rounded-full bg-white px-2.5 py-1 text-xs font-medium text-slate-900 shadow-xs dark:bg-surface-field dark:text-ink dark:shadow-hairline-dark">
       {badge}
     </span>
   </div>
-  <div class="flex flex-col gap-1">
-    <h3 class="text-base font-semibold text-slate-900 dark:text-ink">{item.title}</h3>
-    <p class="text-sm text-slate-500 dark:text-ink-2">{item.description}</p>
-  </div>
+  <NumberedPoint index={index} title={item.title} description={item.description} mark={mark} />
 </article>

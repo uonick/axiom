@@ -2,16 +2,19 @@
 import { Picture } from 'astro:assets'
 import type { ImageMetadata } from 'astro'
 import type { FeatureText } from '../i18n/translations.types'
+import NumberedPoint from './NumberedPoint.astro'
 
 type Props = Readonly<{
   feature: FeatureText
   image: ImageMetadata
   widths: readonly number[]
   focus?: 'center' | 'bottom' | 'top'
+  index: number
   revealIndex: number
+  mark?: 'team' | 'code' | 'bolt' | 'layers' | 'chat' | 'cube'
 }>
 
-const { feature, image, widths, focus = 'center', revealIndex } = Astro.props
+const { feature, image, widths, focus = 'center', index, revealIndex, mark } = Astro.props
 ---
 
 <article class="flex flex-col gap-4" data-reveal style={`--reveal-index: ${revealIndex}`}>
@@ -31,8 +34,5 @@ const { feature, image, widths, focus = 'center', revealIndex } = Astro.props
     loading="lazy"
     decoding="async"
   />
-  <div class="flex flex-col gap-1">
-    <h3 class="text-base font-semibold text-slate-900 dark:text-ink">{feature.title}</h3>
-    <p class="text-sm text-slate-500 dark:text-ink-2">{feature.description}</p>
-  </div>
+  <NumberedPoint index={index} title={feature.title} description={feature.description} mark={mark} />
 </article>

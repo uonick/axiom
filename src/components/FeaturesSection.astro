@@ -7,9 +7,9 @@ import modelsShot from '../assets/features/models.png'
 
 const text = translationFor(Astro.currentLocale)
 const shots = [
-  { src: environmentShot, text: text.features[0], widths: [480, 768, 832], focus: 'center' },
-  { src: modesShot, text: text.features[1], widths: [480, 596], focus: 'bottom' },
-  { src: modelsShot, text: text.features[2], widths: [480, 768, 990], focus: 'center' },
+  { src: environmentShot, text: text.features[0], widths: [480, 768, 832], focus: 'center', mark: 'layers' },
+  { src: modesShot, text: text.features[1], widths: [480, 596], focus: 'bottom', mark: 'chat' },
+  { src: modelsShot, text: text.features[2], widths: [480, 768, 990], focus: 'center', mark: 'cube' },
 ] as const
 ---
 
@@ -19,7 +19,7 @@ const shots = [
   </h2>
   <div class="mt-10 grid gap-10 md:grid-cols-3">
     {shots.map((shot, index) => (
-      <FeatureCard feature={shot.text} image={shot.src} widths={shot.widths} focus={shot.focus} revealIndex={index + 1} />
+      <FeatureCard feature={shot.text} image={shot.src} widths={shot.widths} focus={shot.focus} index={index} revealIndex={index + 1} mark={shot.mark} />
     ))}
   </div>
 </section>

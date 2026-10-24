@@ -34,6 +34,7 @@ export type Translation = Readonly<{
   features: readonly FeatureText[]
   faqTitle: string
   faq: readonly FaqText[]
+  providersEyebrow: string
   providersTitle: string
   providersSubtitle: string
   providerCaptions: Readonly<Record<ProviderKey, string>>
