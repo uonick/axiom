@@ -8,6 +8,8 @@ export type ScreenText = Readonly<{ title: string; description: string; alt: str
 
 export type RoadmapText = Readonly<{ title: string; description: string }>
 
+export type UsageText = Readonly<{ title: string; description: string }>
+
 export type FaqText = Readonly<{ question: string; answer: string }>
 
 export type Translation = Readonly<{
@@ -34,6 +36,11 @@ export type Translation = Readonly<{
   features: readonly FeatureText[]
   faqTitle: string
   faq: readonly FaqText[]
+  usageEyebrow: string
+  usageTitle: string
+  usageSubtitle: string
+  usageSoonBadge: string
+  usage: readonly UsageText[]
   providersEyebrow: string
   providersTitle: string
   providersSubtitle: string

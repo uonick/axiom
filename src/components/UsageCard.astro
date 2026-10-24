@@ -1,0 +1,36 @@
+---
+import type { UsageText } from '../i18n/translations.types'
+import NumberedPoint from './NumberedPoint.astro'
+import UsageGhost from './UsageGhost.astro'
+
+type Props = Readonly<{
+  item: UsageText
+  kind: 'free' | 'subscription' | 'keys' | 'corporate'
+  mark: 'code' | 'spark' | 'bolt' | 'team'
+  index: number
+  badge?: string
+  revealIndex: number
+}>
+
+const { item, kind, mark, index, badge, revealIndex } = Astro.props
+---
+
+<article class="flex flex-col gap-4" data-reveal style={`--reveal-index: ${revealIndex}`}>
+  <div
+    class:list={[
+      'relative aspect-4/3 w-full overflow-hidden rounded-card bg-gradient-to-br',
+      kind === 'free' && 'from-emerald-50 to-sky-100 dark:from-emerald-500/20 dark:to-sky-500/15',
+      kind === 'subscription' && 'from-violet-100 to-rose-50 dark:from-violet-500/25 dark:to-rose-500/15',
+      kind === 'keys' && 'from-amber-50 to-violet-100 dark:from-amber-500/20 dark:to-violet-500/20',
+      kind === 'corporate' && 'from-sky-100 to-indigo-100 dark:from-sky-500/25 dark:to-indigo-500/20',
+    ]}
+  >
+    <UsageGhost kind={kind} />
+    {badge !== undefined && (
+      <span class="absolute left-3 top-3 z-20 inline-flex items-center rounded-full bg-white px-2.5 py-1 text-xs font-medium text-slate-900 shadow-xs dark:bg-surface-field dark:text-ink dark:shadow-hairline-dark">
+        {badge}
+      </span>
+    )}
+  </div>
+  <NumberedPoint index={index} title={item.title} description={item.description} mark={mark} />
+</article>

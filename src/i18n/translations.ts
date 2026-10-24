@@ -64,6 +64,30 @@ export const translations: Readonly<Record<Locale, Translation>> = {
           'It reads and edits project files and runs sandboxed commands. Plan and Ask only read. Debug runs commands and diagnostics and does not change files. @ in the composer inserts a file, an older chat, a rule, a skill, or a pipeline of up to three steps.',
       },
     ],
+    usageEyebrow: 'Ways to use',
+    usageTitle: 'Pick how you use Axiom',
+    usageSubtitle: 'From a solo setup on your laptop to a whole company on one config.',
+    usageSoonBadge: 'In development',
+    usage: [
+      {
+        title: 'Free',
+        description: 'Install local models with no extra tools, set up your environment and use it free, always.',
+      },
+      {
+        title: 'Your own keys',
+        description: 'Use your own keys from your favorite providers, such as OpenAI or Anthropic, and keep track of spending across projects and the app.',
+      },
+      {
+        title: 'Corporate',
+        description:
+          'Your project skills, MCP, models, settings and plans load in one click. An employee opens the app and everything is ready, while managers control the accounts.',
+      },
+      {
+        title: 'Subscription',
+        description:
+          'One subscription for all well-known models plus our own, at the same price. Sign in, pay and start working.',
+      },
+    ],
     providersEyebrow: 'Flexible AI',
     providersTitle: 'Bring your own model and key',
     providersSubtitle:
@@ -183,6 +207,30 @@ export const translations: Readonly<Record<Locale, Translation>> = {
         question: 'Что делает режим Agent?',
         answer:
           'Читает и правит файлы проекта, запускает команды в песочнице. Удаление файла, команда на хосте и push ждут вашего подтверждения. Plan и Ask только читают. Debug запускает команды и диагностику, файлы не меняет. @ в поле ввода подставляет файл, старый чат, правило, навык или пайплайн до трёх шагов.',
+      },
+    ],
+    usageEyebrow: 'Как использовать',
+    usageTitle: 'Выбирайте, как использовать Axiom',
+    usageSubtitle: 'От личной установки на ноутбуке до целой компании с единой настройкой.',
+    usageSoonBadge: 'В разработке',
+    usage: [
+      {
+        title: 'Бесплатно',
+        description: 'Установите локальные модели без дополнительных инструментов, настройте окружение и пользуйтесь бесплатно всегда.',
+      },
+      {
+        title: 'Свои ключи',
+        description: 'Используйте свои собственные ключи от любимых поставщиков, например OpenAI или Anthropic, и контролируйте расходы в проектах и приложении.',
+      },
+      {
+        title: 'Корпоративный',
+        description:
+          'Проектные skills, MCP, модели, настройки и тарифы подгружаются по клику. Сотрудник открывает приложение, и всё уже готово, а руководство контролирует учётные записи.',
+      },
+      {
+        title: 'Подписка',
+        description:
+          'Одна подписка на все известные модели и наши собственные, по той же цене. Авторизуетесь, оплачиваете и пользуетесь.',
       },
     ],
     providersEyebrow: 'Гибкий ИИ',
