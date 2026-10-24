@@ -1,5 +1,5 @@
 ---
-type Mark = 'team' | 'code' | 'bolt' | 'spark' | 'sliders' | 'layers' | 'chat' | 'cube'
+type Mark = 'team' | 'code' | 'bolt' | 'spark' | 'sliders' | 'layers' | 'chat' | 'cube' | 'folder'
 
 type Props = Readonly<{
   index: number
@@ -10,13 +10,25 @@ type Props = Readonly<{
 
 const { index, title, description, mark } = Astro.props
 const label = String(index + 1).padStart(2, '0')
+const tone = index % 4
 ---
 
 <div class="flex items-start gap-2.5">
   <span
-    class="flex size-7 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold leading-none text-indigo-500 tabular-nums dark:bg-indigo-400/20 dark:text-indigo-200"
+    class:list={[
+      'flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold leading-none tabular-nums',
+      tone === 0 && 'bg-violet-100 text-violet-600 dark:bg-violet-400/20 dark:text-violet-200',
+      tone === 1 && 'bg-sky-100 text-sky-600 dark:bg-sky-400/20 dark:text-sky-200',
+      tone === 2 && 'bg-rose-100 text-rose-600 dark:bg-rose-400/20 dark:text-rose-200',
+      tone === 3 && 'bg-amber-100 text-amber-600 dark:bg-amber-400/20 dark:text-amber-200',
+    ]}
     aria-hidden="true"
   >
+    {mark === 'folder' && (
+      <svg class="size-3.5" viewBox="0 0 24 24" fill="none">
+        <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"></path>
+      </svg>
+    )}
     {mark === 'team' && (
       <svg class="size-3.5" viewBox="0 0 24 24" fill="none">
         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
