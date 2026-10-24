@@ -26,7 +26,8 @@ export type Translation = Readonly<{
   headerGithub: string
   heroTitle: string
   heroSubtitle: string
-  downloadBeta: string
+  download: string
+  betaBadge: string
   featuresTitle: string
   features: readonly FeatureText[]
   faqTitle: string

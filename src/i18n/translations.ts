@@ -21,7 +21,8 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     headerGithub: 'GitHub',
     heroTitle: 'A multi-agent development environment',
     heroSubtitle: 'One workspace for the project, the environment, models, pipelines, and agent orchestration',
-    downloadBeta: 'Download beta',
+    download: 'Download',
+    betaBadge: 'beta',
     featuresTitle: 'Built for real engineering work',
     features: [
       {
@@ -122,7 +123,8 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     headerGithub: 'GitHub',
     heroTitle: 'Мультиагентная среда разработки',
     heroSubtitle: 'Единое пространство для проекта, окружения, моделей, пайплайнов и оркестрации агентов',
-    downloadBeta: 'Скачать бету',
+    download: 'Скачать',
+    betaBadge: 'beta',
     featuresTitle: 'Для настоящей работы с проектами',
     features: [
       {

@@ -18,25 +18,28 @@ const text = translationFor(Astro.currentLocale)
     {text.heroSubtitle}
   </p>
   <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-    <Button href={siteConfig.latestReleaseUrl} label={text.downloadBeta} variant="primary" download>
+    <Button href={siteConfig.latestReleaseUrl} label={text.download} badge={text.betaBadge} variant="primary" size="lg" download>
       <PlatformIcons />
     </Button>
     <Button href={siteConfig.repositoryUrl} label={text.github} variant="secondary">
       <GithubIcon />
     </Button>
   </div>
-  <Picture
-    class="hero-shot mt-12 block h-auto w-full sm:mt-16"
-    src={screenshot}
-    alt={text.screenshotAlt}
-    width={2104}
-    widths={[640, 1024, 1600, 2104]}
-    sizes="(min-width: 1152px) 1104px, calc(100vw - 2rem)"
-    formats={['webp']}
-    fallbackFormat="webp"
-    quality={80}
-    loading="eager"
-    fetchpriority="high"
-    decoding="async"
-  />
+  <div class="mt-12 overflow-hidden rounded-md shadow-hero sm:mt-16 sm:rounded-lg md:rounded-xl">
+    <Picture
+      class="block h-auto w-full"
+      pictureAttributes={{ class: 'block' }}
+      src={screenshot}
+      alt={text.screenshotAlt}
+      width={2104}
+      widths={[640, 1024, 1600, 2104]}
+      sizes="(min-width: 1152px) 1104px, calc(100vw - 2rem)"
+      formats={['webp']}
+      fallbackFormat="webp"
+      quality={80}
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+  </div>
 </section>

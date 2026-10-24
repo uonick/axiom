@@ -18,11 +18,13 @@
   --color-line-strong: #3a3c40;
   --color-accent: #3d9aff;
   --color-accent-ink: #7ec0ff;
+  --color-red: #ee5c61;
 
   --shadow-hairline-dark: 0 0 0 1px #2e3033;
   --shadow-btn-dark: 0 0 0 1px #3a3c40, 0 1px 2px rgb(0 0 0 / 0.3);
   --shadow-raised-dark: 0 0 0 1px #2e3033, 0 2px 10px rgb(0 0 0 / 0.22);
   --shadow-input-dark: inset 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-hero: 0 2px 6px rgb(15 23 42 / 0.1), 0 18px 40px rgb(15 23 42 / 0.16);
 
   --radius-squircle: 0.625rem;
   --radius-card: 0.875rem;
@@ -51,10 +53,6 @@
 [data-download][data-platform='windows'] [data-platform-icon='windows'],
 [data-download][data-platform='linux'] [data-platform-icon='linux'] {
   display: inline-flex;
-}
-
-.hero-shot {
-  filter: drop-shadow(0 2px 6px rgb(15 23 42 / 0.1)) drop-shadow(0 18px 40px rgb(15 23 42 / 0.16));
 }
 
 .below-fold {

@@ -4,11 +4,12 @@ type Props = Readonly<{
   label: string
   variant: 'primary' | 'secondary'
   tone?: 'default' | 'inverted'
-  size?: 'md' | 'sm'
+  size?: 'lg' | 'md' | 'sm'
   download?: boolean
+  badge?: string
 }>
 
-const { href, label, variant, tone = 'default', size = 'md', download = false } = Astro.props
+const { href, label, variant, tone = 'default', size = 'md', download = false, badge } = Astro.props
 
 const variantClasses = {
   default: {
@@ -26,6 +27,7 @@ const variantClasses = {
 }
 
 const sizeClasses = {
+  lg: 'min-h-11 gap-2 px-10 text-sm',
   md: 'min-h-11 gap-2 px-5 text-sm',
   sm: 'h-8 gap-1.5 px-3 text-xs',
 }
@@ -33,7 +35,7 @@ const sizeClasses = {
 
 <a
   class:list={[
-    'inline-flex items-center justify-center rounded-full font-medium transition-colors duration-150 active:scale-95',
+    'relative inline-flex items-center justify-center rounded-full font-medium transition-colors duration-150 active:scale-95',
     sizeClasses[size],
     variantClasses[tone][variant],
   ]}
@@ -44,4 +46,11 @@ const sizeClasses = {
 >
   <slot />
   <span>{label}</span>
+  {
+    badge && (
+      <span class="absolute -right-2 -top-2 rounded-full bg-red px-1.5 py-0.5 text-xs font-semibold leading-none text-white shadow-sm">
+        {badge}
+      </span>
+    )
+  }
 </a>

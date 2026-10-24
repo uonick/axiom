@@ -17,7 +17,7 @@ const text = translationFor(Astro.currentLocale)
     </h2>
     <p class="mt-4 max-w-xl text-base text-white/70 sm:text-lg dark:text-surface-page/70">{text.ctaSubtitle}</p>
     <div class="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
-      <Button href={siteConfig.latestReleaseUrl} label={text.downloadBeta} variant="primary" tone="inverted" download>
+      <Button href={siteConfig.latestReleaseUrl} label={text.download} badge={text.betaBadge} variant="primary" tone="inverted" size="lg" download>
         <PlatformIcons />
       </Button>
       <Button href={siteConfig.repositoryUrl} label={text.github} variant="secondary" tone="inverted">
