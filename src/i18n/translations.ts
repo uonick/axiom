@@ -79,6 +79,20 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       local: 'GGUF on disk',
       custom: 'Your endpoint',
     },
+    screens: [
+      {
+        title: 'Projects and chats, side by side',
+        description:
+          'The open folder, its chats and token use. Switch projects without leaving the window.',
+        alt: 'Axiom project list, chats and token use',
+      },
+      {
+        title: 'Git next to the chat',
+        description:
+          'Context, commits and branches in the same column. Pull, push and Docker stay in this window.',
+        alt: 'Axiom project context and Git panel',
+      },
+    ],
     ctaTitle: 'Stop pasting code into chats',
     ctaSubtitle: 'Axiom is a multi-agent desktop client for managing code, environment and agents. Built for companies and teams. Beta for macOS, Windows and Linux.',
     footerGroups: { product: 'Product', resources: 'Resources', legal: 'Legal' },
@@ -163,6 +177,18 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       local: 'GGUF на диске',
       custom: 'Свой endpoint',
     },
+    screens: [
+      {
+        title: 'Проекты и чаты рядом',
+        description: 'Открытая папка, её чаты и расход токенов. Переключение между проектами в том же окне.',
+        alt: 'Axiom: список проектов, чаты и расход токенов',
+      },
+      {
+        title: 'Git рядом с чатом',
+        description: 'Контекст, коммиты и ветки в той же колонке. Pull, push и Docker остаются в этом окне.',
+        alt: 'Axiom: контекст проекта и панель Git',
+      },
+    ],
     ctaTitle: 'Хватит копировать код в чат',
     ctaSubtitle: 'Axiom, мультиагентный десктопный клиент для работы с кодом, окружением и агентами. Для компаний и команд. Бета для macOS, Windows и Linux.',
     footerGroups: { product: 'Продукт', resources: 'Материалы', legal: 'Документы' },

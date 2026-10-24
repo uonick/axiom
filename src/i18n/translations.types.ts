@@ -4,6 +4,8 @@ export type Locale = 'en' | 'ru'
 
 export type FeatureText = Readonly<{ title: string; description: string }>
 
+export type ScreenText = Readonly<{ title: string; description: string; alt: string }>
+
 export type FaqText = Readonly<{ question: string; answer: string }>
 
 export type Translation = Readonly<{
@@ -32,6 +34,7 @@ export type Translation = Readonly<{
   providersTitle: string
   providersSubtitle: string
   providerCaptions: Readonly<Record<ProviderKey, string>>
+  screens: readonly ScreenText[]
   ctaTitle: string
   ctaSubtitle: string
   footerGroups: Readonly<{ product: string; resources: string; legal: string }>
