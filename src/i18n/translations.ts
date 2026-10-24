@@ -25,7 +25,6 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     heroTitle: "A multi-agent development environment",
     heroSubtitle:
       "One workspace for the project, the environment, models, pipelines, and agent orchestration",
-    download: "Download",
     betaBadge: "beta",
     featuresTitle: "Agent modes",
     features: [
@@ -190,7 +189,6 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     heroTitle: "Мультиагентная среда разработки",
     heroSubtitle:
       "Единое пространство для проекта, окружения, моделей, пайплайнов и оркестрации агентов",
-    download: "Скачать",
     betaBadge: "beta",
     featuresTitle: "Агентные режимы",
     features: [
