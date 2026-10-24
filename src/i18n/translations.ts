@@ -180,7 +180,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     download: "Скачать",
     github: "GitHub",
     screenshotAlt: "Axiom на macOS: чат проекта, панель Git и терминал",
-    screenshotCaption: "* Не форк VS Code. Пишем с нуля, в России",
+    screenshotCaption: "* Не очереднойфорк VS Code. Создано в России",
     ogImageAlt: "Окно Axiom: чат проекта, Git и терминал",
     applicationDescription:
       "Десктопный клиент для компаний и команд. Агенты читают и правят открытый проект, работают с Git, терминалом и Docker, ходят в облачную или локальную модель. Чаты и ключи API остаются на компьютере.",
