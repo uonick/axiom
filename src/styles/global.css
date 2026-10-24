@@ -62,6 +62,35 @@
   contain-intrinsic-size: auto 40rem;
 }
 
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    translate: 0 0.75rem;
+  }
+}
+
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    translate: 0 -0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-motion] header {
+    animation: drop-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+
+  html[data-motion] [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+  }
+
+  html[data-motion] [data-revealed] {
+    animation: rise-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: calc(var(--reveal-index, 0) * 55ms);
+  }
+}
+
 .cta-panel {
   position: relative;
   isolation: isolate;

@@ -5,11 +5,13 @@ const text = translationFor(Astro.currentLocale)
 ---
 
 <section class="below-fold mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-  <h2 class="max-w-2xl text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl dark:text-ink">{text.faqTitle}</h2>
+  <h2 class="max-w-2xl text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl dark:text-ink" data-reveal style="--reveal-index: 0">
+    {text.faqTitle}
+  </h2>
   <div class="mt-8 flex max-w-3xl flex-col">
     {
-      text.faq.map((item) => (
-        <div class="border-t border-slate-200 py-5 dark:border-line">
+      text.faq.map((item, index) => (
+        <div class="border-t border-slate-200 py-5 dark:border-line" data-reveal style={`--reveal-index: ${index + 1}`}>
           <h3 class="text-base font-semibold text-slate-900 dark:text-ink">{item.question}</h3>
           <p class="mt-2 max-w-2xl text-sm text-slate-500 dark:text-ink-2">{item.answer}</p>
         </div>

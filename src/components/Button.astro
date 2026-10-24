@@ -7,9 +7,10 @@ type Props = Readonly<{
   size?: 'lg' | 'md' | 'sm'
   download?: boolean
   badge?: string
+  revealIndex?: number
 }>
 
-const { href, label, variant, tone = 'default', size = 'md', download = false, badge } = Astro.props
+const { href, label, variant, tone = 'default', size = 'md', download = false, badge, revealIndex } = Astro.props
 
 const variantClasses = {
   default: {
@@ -35,7 +36,7 @@ const sizeClasses = {
 
 <a
   class:list={[
-    'relative inline-flex items-center justify-center rounded-full font-medium transition-colors duration-150 active:scale-95',
+    'relative inline-flex items-center justify-center rounded-full font-medium transition duration-150 hover:-translate-y-px active:translate-y-0 active:scale-95',
     sizeClasses[size],
     variantClasses[tone][variant],
   ]}
@@ -43,6 +44,8 @@ const sizeClasses = {
   target={download ? undefined : '_blank'}
   rel={download ? undefined : 'noopener noreferrer'}
   data-download={download ? '' : undefined}
+  data-reveal={revealIndex === undefined ? undefined : ''}
+  style={revealIndex === undefined ? undefined : `--reveal-index: ${revealIndex}`}
 >
   <slot />
   <span>{label}</span>

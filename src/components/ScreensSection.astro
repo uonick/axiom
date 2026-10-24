@@ -15,8 +15,8 @@ const shots = [
 
 <section class="below-fold mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
   <div class="grid gap-10 md:grid-cols-3">
-    {shots.map((shot) => (
-      <FeatureCard feature={shot.text} image={shot.src} widths={shot.widths} focus={shot.focus} />
+    {shots.map((shot, index) => (
+      <FeatureCard feature={shot.text} image={shot.src} widths={shot.widths} focus={shot.focus} revealIndex={index} />
     ))}
   </div>
 </section>

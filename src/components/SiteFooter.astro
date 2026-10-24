@@ -29,7 +29,7 @@ const columns = [
 const year = new Date().getFullYear()
 ---
 
-<footer class="below-fold border-t border-slate-200 dark:border-line">
+<footer class="below-fold border-t border-slate-200 dark:border-line" data-reveal style="--reveal-index: 0">
   <div class="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:px-6 md:flex-row md:items-start md:justify-between">
     <a class="flex min-h-11 items-center gap-2 font-mono" href={getRelativeLocaleUrl(locale, '')} aria-label={siteConfig.name}>
       <Image class="size-7" src={icon} alt="" width={28} height={28} densities={[1, 2]} format="webp" />

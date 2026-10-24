@@ -8,12 +8,13 @@ type Props = Readonly<{
   image: ImageMetadata
   widths: readonly number[]
   focus?: 'center' | 'bottom' | 'top'
+  revealIndex: number
 }>
 
-const { feature, image, widths, focus = 'center' } = Astro.props
+const { feature, image, widths, focus = 'center', revealIndex } = Astro.props
 ---
 
-<article class="flex flex-col gap-4">
+<article class="flex flex-col gap-4" data-reveal style={`--reveal-index: ${revealIndex}`}>
   <Picture
     class:list={[
       'aspect-4/3 w-full rounded-card object-cover',

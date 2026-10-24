@@ -7,12 +7,14 @@ const ghostKinds = ['projects', 'rules', 'controls'] as const
 ---
 
 <section class="below-fold mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-  <h2 class="max-w-2xl text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl dark:text-ink">{text.roadmapTitle}</h2>
+  <h2 class="max-w-2xl text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl dark:text-ink" data-reveal style="--reveal-index: 0">
+    {text.roadmapTitle}
+  </h2>
   <div class="mt-10 grid gap-10 md:grid-cols-3">
     {text.roadmap.map((item, index) => {
       const kind = ghostKinds[index]
       if (kind === undefined) return null
-      return <RoadmapCard item={item} badge={text.roadmapBadge} kind={kind} />
+      return <RoadmapCard item={item} badge={text.roadmapBadge} kind={kind} revealIndex={index + 1} />
     })}
   </div>
 </section>

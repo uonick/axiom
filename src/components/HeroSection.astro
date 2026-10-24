@@ -11,21 +11,35 @@ const text = translationFor(Astro.currentLocale)
 ---
 
 <section class="mx-auto max-w-6xl px-4 pb-12 pt-12 sm:px-6 sm:pt-20">
-  <h1 id="hero-title" class="max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl dark:text-ink">
+  <h1
+    id="hero-title"
+    class="max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl dark:text-ink"
+    data-reveal
+    style="--reveal-index: 0"
+  >
     {text.heroTitle}
   </h1>
-  <p id="hero-summary" class="mt-5 max-w-xl text-base text-slate-500 sm:text-lg dark:text-ink-2">
+  <p
+    id="hero-summary"
+    class="mt-5 max-w-xl text-base text-slate-500 sm:text-lg dark:text-ink-2"
+    data-reveal
+    style="--reveal-index: 1"
+  >
     {text.heroSubtitle}
   </p>
   <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-    <Button href={siteConfig.latestReleaseUrl} label={text.download} badge={text.betaBadge} variant="primary" size="lg" download>
+    <Button href={siteConfig.latestReleaseUrl} label={text.download} badge={text.betaBadge} variant="primary" size="lg" download revealIndex={2}>
       <PlatformIcons />
     </Button>
-    <Button href={siteConfig.repositoryUrl} label={text.github} variant="secondary">
+    <Button href={siteConfig.repositoryUrl} label={text.github} variant="secondary" revealIndex={3}>
       <GithubIcon />
     </Button>
   </div>
-  <div class="mt-12 overflow-hidden rounded-md shadow-hero sm:mt-16 sm:rounded-lg md:rounded-xl">
+  <div
+    class="mt-12 overflow-hidden rounded-md shadow-hero sm:mt-16 sm:rounded-lg md:rounded-xl"
+    data-reveal
+    style="--reveal-index: 4"
+  >
     <Picture
       class="block h-auto w-full"
       pictureAttributes={{ class: 'block' }}

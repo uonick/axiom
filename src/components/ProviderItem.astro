@@ -5,12 +5,13 @@ import ProviderIcon from './ProviderIcon.astro'
 type Props = Readonly<{
   name: ProviderKey
   caption: string
+  revealIndex: number
 }>
 
-const { name, caption } = Astro.props
+const { name, caption, revealIndex } = Astro.props
 ---
 
-<li class="flex min-w-0 flex-col gap-3 border-l border-slate-200 pl-4 dark:border-line">
+<li class="flex min-w-0 flex-col gap-3 border-l border-slate-200 pl-4 dark:border-line" data-reveal style={`--reveal-index: ${revealIndex}`}>
   <span class="text-slate-400 dark:text-ink-3"><ProviderIcon name={name} /></span>
   <div class="min-w-0">
     <p class="truncate text-sm font-semibold text-slate-900 dark:text-ink">{providerNames[name]}</p>
