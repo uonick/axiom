@@ -80,7 +80,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       {
         title: 'Corporate',
         description:
-          'Your project skills, MCP, models, settings and plans load in one click. An employee opens the app and everything is ready, while managers control the accounts.',
+          'Skills, MCP, models and company settings load automatically. An employee opens the app and everything is already set up, while a manager handles the accounts.',
       },
       {
         title: 'Subscription',
@@ -225,7 +225,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       {
         title: 'Корпоративный',
         description:
-          'Проектные skills, MCP, модели, настройки и тарифы подгружаются по клику. Сотрудник открывает приложение, и всё уже готово, а руководство контролирует учётные записи.',
+          'Автоподгрузка skills, MCP, моделей и настроек компании. Сотрудник открывает приложение, и всё уже настроено, а руководитель управляет учётными записями.',
       },
       {
         title: 'Подписка',
