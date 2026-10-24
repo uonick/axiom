@@ -19,26 +19,22 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       'Local-first desktop app. The chat reads and edits the open project, uses Git, a terminal and Docker, and calls a cloud or local model. Chats and API keys stay on the machine.',
     headerDownload: 'Download',
     headerGithub: 'GitHub',
-    heroTitle: 'The unified AI workspace for modern team development',
-    heroSubtitle:
-      'Axiom brings full-project context to your chat. It works in your Git, terminal and Docker, runs any model, and keeps chats and API keys on your machine.',
+    heroTitle: 'A multi-agent development environment',
+    heroSubtitle: 'One workspace for the project, the environment, models, and pipelines',
     downloadBeta: 'Download beta',
     featuresTitle: 'Built for real engineering work',
     features: [
       {
-        title: 'Works in your real environment',
-        description:
-          'Axiom reads the project, edits files with precise diffs and runs commands in a sandbox. Git, several terminals, npm, Composer and Docker Compose live in the same window.',
+        title: 'Environment control',
+        description: 'Run Docker, Git, Composer, and npm without launching other apps.',
       },
       {
-        title: 'Four modes, one chat',
-        description:
-          'Agent edits and runs. Plan and Ask only read. Debug runs diagnostics and leaves your files alone. Type @ to pull in a file, an old chat, a rule, a skill or a pipeline.',
+        title: 'Work modes',
+        description: 'Agent edits the code. Ask advises on the code. Plan scopes the feature.',
       },
       {
-        title: 'Stays on your machine',
-        description:
-          'Chats, settings and provider keys are stored locally. No Axiom account, no cloud workspace. With Ollama or a GGUF file the repo never leaves the disk.',
+        title: 'Any model',
+        description: 'Connect your own local models, or any other model as a GGUF file.',
       },
     ],
     faqTitle: 'Questions',
@@ -46,7 +42,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       {
         question: 'What is Axiom?',
         answer:
-          'A desktop app for developers. You open a project folder and chat with a model that can see those files. Git, a terminal and Docker Compose are in the same window. The beta runs on macOS, Windows and Linux.',
+          'A multi-agent desktop client for code, the environment, and agents. Built for companies and teams. Open a project folder and talk to a model that can see those files. Git, a terminal, and Docker Compose stay in the same window.',
       },
       {
         question: 'Does my code stay on the machine?',
@@ -66,7 +62,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     ],
     providersTitle: 'Bring your own model and key',
     providersSubtitle:
-      'Anthropic, OpenAI, Google, xAI, Qwen, DeepSeek, OpenRouter, Ollama, a GGUF file, or any compatible endpoint. Switch in the chat.',
+      'Anthropic, OpenAI, Google, xAI, Qwen, DeepSeek, OpenRouter, Ollama, a GGUF file, or any compatible endpoint. Switch easily during the conversation.',
     providerCaptions: {
       anthropic: 'Claude',
       openai: 'GPT',
@@ -93,8 +89,9 @@ export const translations: Readonly<Record<Locale, Translation>> = {
         alt: 'Axiom project context and Git panel',
       },
     ],
-    ctaTitle: 'Stop pasting code into chats',
-    ctaSubtitle: 'Axiom is a multi-agent desktop client for managing code, environment and agents. Built for companies and teams. Beta for macOS, Windows and Linux.',
+    ctaTitle: 'A new level of project control',
+    ctaSubtitle:
+      'A multi-agent desktop client for code, the environment, and agents. Built for companies and teams.',
     footerGroups: { product: 'Product', resources: 'Resources', legal: 'Legal' },
     footerLinks: { releases: 'Releases', source: 'Source code', issues: 'Issues', license: 'License' },
     footerRights: 'All rights reserved.',
@@ -117,26 +114,24 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       'Десктопный клиент для компаний и команд. Агенты читают и правят открытый проект, работают с Git, терминалом и Docker, ходят в облачную или локальную модель. Чаты и ключи API остаются на компьютере.',
     headerDownload: 'Скачать',
     headerGithub: 'GitHub',
-    heroTitle: 'Код, окружение и агенты в одном окне',
-    heroSubtitle:
-      'Десктопный клиент для компаний и команд. Агенты читают проект, правят код, ходят в Git, терминал и Docker, а чаты и ключи лежат у вас на диске.',
+    heroTitle: 'Мультиагентная среда разработки',
+    heroSubtitle: 'Единое пространство для проекта, окружения, моделей и пайплайнов',
     downloadBeta: 'Скачать бету',
     featuresTitle: 'Для настоящей работы с кодом',
     features: [
       {
-        title: 'Работает там же, где вы',
+        title: 'Управление окружением',
         description:
-          'Читает проект, правит файлы точечными диффами, гоняет команды в песочнице. Git, терминалы, npm, Composer и Docker Compose, всё в этом же окне.',
+          'Управляйте Docker, Git, Composer и npm, не запуская дополнительных приложений.',
       },
       {
-        title: 'Четыре режима',
-        description:
-          'Agent правит и запускает. Plan и Ask только читают. Debug гоняет диагностику, файлы не трогает. Через @ в чат попадает файл, старый диалог, правило, навык или пайплайн.',
+        title: 'Режимы работы',
+        description: 'Agent правит код, Ask — умный советник по коду, Plan планирует фичу.',
       },
       {
-        title: 'Всё у вас на диске',
+        title: 'Любые модели',
         description:
-          'Чаты, настройки и ключи лежат локально. Аккаунт не нужен, облака нет. С Ollama или GGUF код вообще не уходит с машины.',
+          'Подключайте свои локальные модели или любые другие в формате GGUF.',
       },
     ],
     faqTitle: 'Вопросы',
@@ -144,7 +139,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       {
         question: 'Что такое Axiom?',
         answer:
-          'Мультиагентный десктопный клиент для работы с кодом, окружением и агентами. Рассчитан на компании и команды. Открываете папку проекта и общаетесь с моделью, которая видит файлы. Git, терминал и Docker Compose в том же окне. Бета для macOS, Windows и Linux.',
+          'Мультиагентный десктопный клиент для работы с кодом, окружением и агентами. Рассчитан на компании и команды. Открываете папку проекта и общаетесь с моделью, которая видит файлы. Git, терминал и Docker Compose в том же окне.',
       },
       {
         question: 'Код остаётся на компьютере?',
@@ -164,7 +159,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     ],
     providersTitle: 'Своя модель, свой ключ',
     providersSubtitle:
-      'Anthropic, OpenAI, Google, xAI, Qwen, DeepSeek, OpenRouter, Ollama, файл GGUF или свой endpoint. Переключайте прямо в чате.',
+      'Anthropic, OpenAI, Google, xAI, Qwen, DeepSeek, OpenRouter, Ollama, файл GGUF или свой endpoint. Легко поменять прямо во время диалога.',
     providerCaptions: {
       anthropic: 'Claude',
       openai: 'GPT',
@@ -189,8 +184,8 @@ export const translations: Readonly<Record<Locale, Translation>> = {
         alt: 'Axiom: контекст проекта и панель Git',
       },
     ],
-    ctaTitle: 'Хватит копировать код в чат',
-    ctaSubtitle: 'Axiom, мультиагентный десктопный клиент для работы с кодом, окружением и агентами. Для компаний и команд. Бета для macOS, Windows и Linux.',
+    ctaTitle: 'Новый уровень управления проектами',
+    ctaSubtitle: 'Мультиагентный десктопный клиент для работы с кодом, окружением и агентами. Для компаний и команд.',
     footerGroups: { product: 'Продукт', resources: 'Материалы', legal: 'Документы' },
     footerLinks: { releases: 'Релизы', source: 'Исходный код', issues: 'Баги', license: 'Лицензия' },
     footerRights: 'Все права защищены.',
