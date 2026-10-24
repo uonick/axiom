@@ -6,6 +6,8 @@ export type FeatureText = Readonly<{ title: string; description: string; alt: st
 
 export type ScreenText = Readonly<{ title: string; description: string; alt: string }>
 
+export type RoadmapText = Readonly<{ title: string; description: string }>
+
 export type FaqText = Readonly<{ question: string; answer: string }>
 
 export type Translation = Readonly<{
@@ -36,6 +38,9 @@ export type Translation = Readonly<{
   providersSubtitle: string
   providerCaptions: Readonly<Record<ProviderKey, string>>
   screens: readonly ScreenText[]
+  roadmapTitle: string
+  roadmapBadge: string
+  roadmap: readonly RoadmapText[]
   ctaTitle: string
   ctaSubtitle: string
   footerGroups: Readonly<{ product: string; resources: string; legal: string }>

@@ -1,0 +1,25 @@
+---
+import type { RoadmapText } from '../i18n/translations.types'
+import RoadmapGhost from './RoadmapGhost.astro'
+
+type Props = Readonly<{
+  item: RoadmapText
+  badge: string
+  kind: 'projects' | 'rules' | 'controls'
+}>
+
+const { item, badge, kind } = Astro.props
+---
+
+<article class="flex flex-col gap-4">
+  <div class="relative aspect-4/3 w-full overflow-hidden rounded-card bg-slate-100 shadow-well dark:bg-surface-elevated dark:shadow-well-dark">
+    <RoadmapGhost kind={kind} />
+    <span class="absolute left-1/2 top-1/2 z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center rounded-full bg-white px-2.5 py-1 text-xs font-medium text-slate-900 shadow-sm dark:bg-surface-field dark:text-ink dark:shadow-btn-dark">
+      {badge}
+    </span>
+  </div>
+  <div class="flex flex-col gap-1">
+    <h3 class="text-base font-semibold text-slate-900 dark:text-ink">{item.title}</h3>
+    <p class="text-sm text-slate-500 dark:text-ink-2">{item.description}</p>
+  </div>
+</article>

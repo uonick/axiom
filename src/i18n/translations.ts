@@ -96,6 +96,22 @@ export const translations: Readonly<Record<Locale, Translation>> = {
         alt: 'Axiom pipelines: Quick fix, Plan and implement, Feature delivery, Bug hunt, Code review, and Security audit',
       },
     ],
+    roadmapTitle: 'Roadmap',
+    roadmapBadge: 'In development',
+    roadmap: [
+      {
+        title: 'Team sync',
+        description: 'Your teammates only need the link. The company environment is already set up.',
+      },
+      {
+        title: 'Automatic setup',
+        description: 'Rules, MCP, skills, and models for your team or company load automatically.',
+      },
+      {
+        title: 'Control at hand',
+        description: 'Set limits, models, and prompts for your teammates.',
+      },
+    ],
     ctaTitle: 'A new level of project orchestration',
     ctaSubtitle:
       'A multi-agent desktop client for code, the environment, and agents. Built for companies and teams.',
@@ -198,6 +214,23 @@ export const translations: Readonly<Record<Locale, Translation>> = {
         title: 'Пайплайны',
         description: 'Составляйте свои цепочки действий, формируйте свой пайплайн.',
         alt: 'Пайплайны Axiom: Quick fix, Plan and implement, Feature delivery, Bug hunt, Code review и Security audit',
+      },
+    ],
+    roadmapTitle: 'Роадмап',
+    roadmapBadge: 'в разработке',
+    roadmap: [
+      {
+        title: 'Синхронизация команды',
+        description:
+          'Вашим сотрудникам останется только перейти по ссылке, и окружение вашей компании уже настроено.',
+      },
+      {
+        title: 'Автоматические настройки',
+        description: 'Автоматически подгружаемые правила, MCP, Skills и модели вашей команды или компании.',
+      },
+      {
+        title: 'Управление под рукой',
+        description: 'Легко контролируйте лимиты, модели и промпты ваших сотрудников.',
       },
     ],
     ctaTitle: 'Новый уровень оркестрации проектами',
