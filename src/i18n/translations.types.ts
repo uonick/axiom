@@ -2,7 +2,7 @@ import type { ProviderKey } from '../site.config'
 
 export type Locale = 'en' | 'ru'
 
-export type FeatureText = Readonly<{ title: string; description: string }>
+export type FeatureText = Readonly<{ title: string; description: string; alt: string }>
 
 export type ScreenText = Readonly<{ title: string; description: string; alt: string }>
 

@@ -1,49 +1,22 @@
 ---
-import { Picture } from 'astro:assets'
-import projectsShot from '../assets/screens/projects.png'
+import projectsShot from '../assets/screens/projects-chats.png'
 import gitShot from '../assets/screens/git.png'
+import pipelinesShot from '../assets/screens/pipelines.png'
 import { translationFor } from '../i18n/translations'
+import FeatureCard from './FeatureCard.astro'
 
 const text = translationFor(Astro.currentLocale)
 const shots = [
-  {
-    src: projectsShot,
-    text: text.screens[0],
-    widths: [640, 960, 1400, 2424],
-    sizes: '(min-width: 768px) 736px, calc(100vw - 2rem)',
-  },
-  {
-    src: gitShot,
-    text: text.screens[1],
-    widths: [480, 768, 1100, 1324],
-    sizes: '(min-width: 768px) 352px, calc(100vw - 2rem)',
-  },
+  { src: projectsShot, text: text.screens[0], widths: [480, 768, 1004], focus: 'top' },
+  { src: gitShot, text: text.screens[1], widths: [480, 768, 1100], focus: 'center' },
+  { src: pipelinesShot, text: text.screens[2], widths: [480, 768, 1246], focus: 'top' },
 ] as const
 ---
 
 <section class="below-fold mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-  <div class="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-x-5 md:gap-y-5">
-    {
-      shots.map((shot, index) => (
-        <figure class:list={['md:row-span-2 md:grid md:grid-rows-subgrid', index === 0 && 'md:col-span-2']}>
-          <Picture
-            class="h-auto w-full rounded-card"
-            src={shot.src}
-            alt={shot.text.alt}
-            widths={shot.widths}
-            sizes={shot.sizes}
-            formats={['avif', 'webp']}
-            fallbackFormat="webp"
-            quality={80}
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption class="mt-5 md:mt-0">
-            <h3 class="text-base font-semibold text-slate-900 dark:text-ink">{shot.text.title}</h3>
-            <p class="mt-2 text-sm text-slate-500 dark:text-ink-2">{shot.text.description}</p>
-          </figcaption>
-        </figure>
-      ))
-    }
+  <div class="grid gap-10 md:grid-cols-3">
+    {shots.map((shot) => (
+      <FeatureCard feature={shot.text} image={shot.src} widths={shot.widths} focus={shot.focus} />
+    ))}
   </div>
 </section>

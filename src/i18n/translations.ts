@@ -27,14 +27,17 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       {
         title: 'Environment control',
         description: 'Run Docker, Git, Composer, and npm without launching other apps.',
+        alt: 'Docker and npm scripts in the Axiom environment panel',
       },
       {
         title: 'Work modes',
         description: 'Agent edits the code. Ask advises on the code. Plan scopes the feature.',
+        alt: 'Agent, Plan and Ask mode menu in the Axiom composer',
       },
       {
         title: 'Any model',
         description: 'Connect your own local models, or any other model as a GGUF file.',
+        alt: 'Model providers in Axiom: Anthropic, OpenAI, Grok, Google, Qwen, DeepSeek and OpenRouter',
       },
     ],
     faqTitle: 'Questions',
@@ -77,19 +80,22 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     },
     screens: [
       {
-        title: 'Projects and chats, side by side',
-        description:
-          'The open folder, its chats and token use. Switch projects without leaving the window.',
-        alt: 'Axiom project list, chats and token use',
+        title: 'Easy project grouping',
+        description: 'Group chats by namespace, project, or group.',
+        alt: 'Axiom project list with chats grouped by folder',
       },
       {
-        title: 'Git next to the chat',
-        description:
-          'Context, commits and branches in the same column. Pull, push and Docker stay in this window.',
+        title: 'Control Git, npm, and Docker',
+        description: 'Run your stack without extra apps.',
         alt: 'Axiom project context and Git panel',
       },
+      {
+        title: 'Pipelines',
+        description: 'Compose your own action chains and build your own pipeline.',
+        alt: 'Axiom pipelines: Quick fix, Plan and implement, Feature delivery, Bug hunt, Code review, and Security audit',
+      },
     ],
-    ctaTitle: 'A new level of project control',
+    ctaTitle: 'A new level of project orchestration',
     ctaSubtitle:
       'A multi-agent desktop client for code, the environment, and agents. Built for companies and teams.',
     footerGroups: { product: 'Product', resources: 'Resources', legal: 'Legal' },
@@ -117,21 +123,24 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     heroTitle: 'Мультиагентная среда разработки',
     heroSubtitle: 'Единое пространство для проекта, окружения, моделей и пайплайнов',
     downloadBeta: 'Скачать бету',
-    featuresTitle: 'Для настоящей работы с кодом',
+    featuresTitle: 'Для настоящей работы с проектами',
     features: [
       {
         title: 'Управление окружением',
         description:
           'Управляйте Docker, Git, Composer и npm, не запуская дополнительных приложений.',
+        alt: 'Панель окружения Axiom: вкладки Docker и npm со скриптами',
       },
       {
         title: 'Режимы работы',
         description: 'Agent правит код, Ask — умный советник по коду, Plan планирует фичу.',
+        alt: 'Меню режимов Axiom: Agent, Plan и Ask',
       },
       {
         title: 'Любые модели',
         description:
           'Подключайте свои локальные модели или любые другие в формате GGUF.',
+        alt: 'Провайдеры моделей в Axiom: Anthropic, OpenAI, Grok, Google, Qwen, DeepSeek и OpenRouter',
       },
     ],
     faqTitle: 'Вопросы',
@@ -174,17 +183,22 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     },
     screens: [
       {
-        title: 'Проекты и чаты рядом',
-        description: 'Открытая папка, её чаты и расход токенов. Переключение между проектами в том же окне.',
-        alt: 'Axiom: список проектов, чаты и расход токенов',
+        title: 'Легкая группировка проектов',
+        description: 'Группируйте чаты по неймспейсам, проектам или группам.',
+        alt: 'Axiom: список проектов и чаты по папкам',
       },
       {
-        title: 'Git рядом с чатом',
-        description: 'Контекст, коммиты и ветки в той же колонке. Pull, push и Docker остаются в этом окне.',
+        title: 'Управляйте git, npm и Docker',
+        description: 'Управляйте своим стеком без дополнительных приложений.',
         alt: 'Axiom: контекст проекта и панель Git',
       },
+      {
+        title: 'Пайплайны',
+        description: 'Составляйте свои цепочки действий, формируйте свой пайплайн.',
+        alt: 'Пайплайны Axiom: Quick fix, Plan and implement, Feature delivery, Bug hunt, Code review и Security audit',
+      },
     ],
-    ctaTitle: 'Новый уровень управления проектами',
+    ctaTitle: 'Новый уровень оркестрации проектами',
     ctaSubtitle: 'Мультиагентный десктопный клиент для работы с кодом, окружением и агентами. Для компаний и команд.',
     footerGroups: { product: 'Продукт', resources: 'Материалы', legal: 'Документы' },
     footerLinks: { releases: 'Релизы', source: 'Исходный код', issues: 'Баги', license: 'Лицензия' },

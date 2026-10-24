@@ -1,13 +1,23 @@
 ---
 import { translationFor } from '../i18n/translations'
 import FeatureCard from './FeatureCard.astro'
+import environmentShot from '../assets/features/environment.png'
+import modesShot from '../assets/features/modes.png'
+import modelsShot from '../assets/features/models.png'
 
 const text = translationFor(Astro.currentLocale)
+const shots = [
+  { src: environmentShot, text: text.features[0], widths: [480, 768, 832], focus: 'center' },
+  { src: modesShot, text: text.features[1], widths: [480, 596], focus: 'bottom' },
+  { src: modelsShot, text: text.features[2], widths: [480, 768, 990], focus: 'center' },
+] as const
 ---
 
 <section class="below-fold mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
   <h2 class="max-w-2xl text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl dark:text-ink">{text.featuresTitle}</h2>
   <div class="mt-10 grid gap-10 md:grid-cols-3">
-    {text.features.map((feature) => <FeatureCard feature={feature} />)}
+    {shots.map((shot) => (
+      <FeatureCard feature={shot.text} image={shot.src} widths={shot.widths} focus={shot.focus} />
+    ))}
   </div>
 </section>
