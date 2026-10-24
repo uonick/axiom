@@ -14,6 +14,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     download: 'Download',
     github: 'GitHub',
     screenshotAlt: 'Axiom on macOS: project chat, Git panel and terminal',
+    screenshotCaption: '* Not another VSCode fork, but an independent product.',
     ogImageAlt: 'Axiom desktop window with project chat, Git and a terminal',
     applicationDescription:
       'Local-first desktop app. The chat reads and edits the open project, uses Git, a terminal and Docker, and calls a cloud or local model. Chats and API keys stay on the machine.',
@@ -157,6 +158,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     download: 'Скачать',
     github: 'GitHub',
     screenshotAlt: 'Axiom на macOS: чат проекта, панель Git и терминал',
+    screenshotCaption: '* Свой код, не форк VS Code. Сделано в России.',
     ogImageAlt: 'Окно Axiom: чат проекта, Git и терминал',
     applicationDescription:
       'Десктопный клиент для компаний и команд. Агенты читают и правят открытый проект, работают с Git, терминалом и Docker, ходят в облачную или локальную модель. Чаты и ключи API остаются на компьютере.',

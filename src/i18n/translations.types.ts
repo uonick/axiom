@@ -24,6 +24,7 @@ export type Translation = Readonly<{
   download: string
   github: string
   screenshotAlt: string
+  screenshotCaption: string
   ogImageAlt: string
   applicationDescription: string
   headerDownload: string
