@@ -18,6 +18,8 @@
   --color-accent: #3d9aff;
   --color-accent-ink: #7ec0ff;
   --color-red: #ee5c61;
+  --color-one-dark: #282c34;
+  --color-one-dark-raised: #333842;
 
   --shadow-hairline-dark: 0 0 0 1px #2e3033;
   --shadow-btn-dark: 0 0 0 1px #3a3c40, 0 1px 2px rgb(0 0 0 / 0.3);
