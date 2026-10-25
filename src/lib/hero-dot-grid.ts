@@ -87,16 +87,25 @@ function readCoverColor(): string {
 }
 
 function readDotColor(section: HTMLElement): Rgb {
-  const specified = getComputedStyle(section, '::before').getPropertyValue('--hero-grid-dot')
-  return parseRgb(specified) ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? darkDot : lightDot)
+  const fallback = window.matchMedia('(prefers-color-scheme: dark)').matches ? darkDot : lightDot
+  const specified = getComputedStyle(section).getPropertyValue('--hero-grid-dot').trim()
+  if (specified.length === 0) return fallback
+  const probe = document.createElement('span')
+  probe.style.color = specified
+  section.append(probe)
+  const resolved = getComputedStyle(probe).color
+  probe.remove()
+  return parseRgb(resolved) ?? fallback
 }
 
 export function mountHeroDotGrid(section: HTMLElement): void {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-  const canvas = section.querySelector('.hero-grid-dots')
-  if (!(canvas instanceof HTMLCanvasElement)) return
-  const context = canvas.getContext('2d')
-  if (!context) return
+  const gridCanvas = section.querySelector('.hero-grid-dots')
+  if (!(gridCanvas instanceof HTMLCanvasElement)) return
+  const canvas: HTMLCanvasElement = gridCanvas
+  const acquiredContext = canvas.getContext('2d')
+  if (acquiredContext === null) return
+  const context: CanvasRenderingContext2D = acquiredContext
 
   const pulledDots = new Map<string, PulledDot>()
   let spacing = readSpacing()
