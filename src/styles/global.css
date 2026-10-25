@@ -124,7 +124,7 @@ h2.font-mono {
 .hero-grid {
   position: relative;
   isolation: isolate;
-  --hero-grid-dot: rgb(15 23 42 / 0.16);
+  --hero-grid-dot: rgb(23 24 26 / 0.16);
 }
 
 .hero-grid-dots {

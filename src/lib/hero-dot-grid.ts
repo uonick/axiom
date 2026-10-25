@@ -37,7 +37,7 @@ const TEXT_RADIUS_X = 0.4
 const TEXT_RADIUS_Y = 0.13
 const TEXT_DIM_REACH = 0.4
 
-const lightDot: Rgb = { red: 15, green: 23, blue: 42, alpha: 0.16 }
+const lightDot: Rgb = { red: 23, green: 24, blue: 26, alpha: 0.16 }
 const darkDot: Rgb = { red: 242, green: 243, blue: 244, alpha: 0.14 }
 
 function sampleFade(stops: readonly FadeStop[], ratio: number): number {
