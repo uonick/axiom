@@ -61,7 +61,8 @@
   contain-intrinsic-size: auto 40rem;
 }
 
-#hero-title {
+#hero-title,
+h2.font-mono {
   word-spacing: -0.65ch;
 }
 
