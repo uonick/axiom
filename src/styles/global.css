@@ -122,6 +122,7 @@ h2.font-mono {
 .hero-grid {
   position: relative;
   isolation: isolate;
+  --hero-grid-dot: rgb(15 23 42 / 0.16);
 }
 
 .hero-grid-dots {
@@ -134,26 +135,19 @@ h2.font-mono {
 }
 
 .hero-grid::before {
-  --hero-grid-dot: rgb(15 23 42 / 0.16);
   content: '';
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
   background-image: radial-gradient(circle, var(--hero-grid-dot) 1px, transparent 1px);
   background-size: 1.25rem 1.25rem;
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, transparent 48%, #000 74%, #000 84%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 14%, #000 38%, transparent 68%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(to right, transparent 0%, transparent 48%, #000 74%, #000 84%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 14%, #000 38%, transparent 68%);
-  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 38%, transparent 68%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 38%, transparent 68%);
 }
 
 @variant dark {
-  .hero-grid::before {
+  .hero-grid {
     --hero-grid-dot: rgb(242 243 244 / 0.14);
   }
 }

@@ -10,8 +10,9 @@ import PlatformIcons from './icons/PlatformIcons.astro'
 const text = translationFor(Astro.currentLocale)
 ---
 
-<section class="hero-grid mx-auto max-w-6xl px-4 pb-12 pt-12 sm:px-6 sm:pt-20">
+<section class="hero-grid pb-12 pt-12 sm:pt-20">
   <canvas class="hero-grid-dots" aria-hidden="true"></canvas>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
   <h1
     id="hero-title"
     class="max-w-3xl font-mono text-4xl font-semibold text-slate-900 sm:text-5xl dark:text-ink"
@@ -58,6 +59,7 @@ const text = translationFor(Astro.currentLocale)
     />
   </div>
   <p class="mt-2 text-center text-xs text-slate-400/40 dark:text-ink-3/35">{text.screenshotCaption}</p>
+  </div>
 </section>
 
 <script>

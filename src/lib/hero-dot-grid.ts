@@ -22,14 +22,6 @@ const LIT_ALPHA_BOOST = 0.22
 const LIT_RADIUS_BOOST = 0.12
 const PULL_SHARE = 0.25
 
-const horizontalFade: readonly FadeStop[] = [
-  { at: 0, alpha: 0 },
-  { at: 0.48, alpha: 0 },
-  { at: 0.74, alpha: 1 },
-  { at: 0.84, alpha: 1 },
-  { at: 1, alpha: 0 },
-]
-
 const verticalFade: readonly FadeStop[] = [
   { at: 0, alpha: 0 },
   { at: 0.14, alpha: 1 },
@@ -56,9 +48,9 @@ function sampleFade(stops: readonly FadeStop[], ratio: number): number {
   return stops[stops.length - 1]?.alpha ?? 0
 }
 
-function fieldAlpha(x: number, y: number, width: number, height: number): number {
-  if (width <= 0 || height <= 0) return 0
-  return sampleFade(horizontalFade, x / width) * sampleFade(verticalFade, y / height)
+function fieldAlpha(y: number, height: number): number {
+  if (height <= 0) return 0
+  return sampleFade(verticalFade, y / height)
 }
 
 function parseRgb(value: string): Rgb | null {
@@ -138,7 +130,7 @@ export function mountHeroDotGrid(section: HTMLElement): void {
         const dotRow = row + rowOffset
         if (dotColumn < 0 || dotRow < 0) continue
         const dotOrigin = origin(dotColumn, dotRow)
-        if (fieldAlpha(dotOrigin.x, dotOrigin.y, viewWidth, viewHeight) <= 0) continue
+        if (fieldAlpha(dotOrigin.y, viewHeight) <= 0) continue
         const deltaX = pointerX - dotOrigin.x
         const deltaY = pointerY - dotOrigin.y
         const distance = Math.hypot(deltaX, deltaY)
@@ -188,7 +180,7 @@ export function mountHeroDotGrid(section: HTMLElement): void {
     const litAlpha = Math.min(0.92, dotColor.alpha + LIT_ALPHA_BOOST)
     for (const pulled of pulledDots.values()) {
       const dotOrigin = origin(pulled.column, pulled.row)
-      const mask = fieldAlpha(dotOrigin.x, dotOrigin.y, viewWidth, viewHeight)
+      const mask = fieldAlpha(dotOrigin.y, viewHeight)
       if (mask <= 0) continue
       context.fillStyle = coverColor
       context.globalAlpha = 1
