@@ -5,7 +5,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     htmlLang: "en",
     ogLocale: "en_US",
     languageLabel: "Language",
-    title: "Axiom: the unified AI workspace for modern team development",
+    title: "Axiom, an agentic development environment",
     description:
       "Desktop app for macOS, Windows and Linux. Axiom reads your project, works in Git, a terminal and Docker, and runs any model. Chats and API keys stay on your machine.",
     shortDescription:
@@ -22,7 +22,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       "Local-first desktop app. The chat reads and edits the open project, uses Git, a terminal and Docker, and calls a cloud or local model. Chats and API keys stay on the machine.",
     headerDownload: "Download",
     headerGithub: "GitHub",
-    heroTitle: "A multi-agent development environment",
+    heroTitle: "An agentic development environment",
     heroSubtitle:
       "One workspace for the project, the environment, models, pipelines, and agent orchestration",
     betaBadge: "beta",
@@ -169,7 +169,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
     htmlLang: "ru",
     ogLocale: "ru_RU",
     languageLabel: "Язык",
-    title: "Axiom: код, окружение и агенты в одном окне",
+    title: "Axiom — агентная среда разработки",
     description:
       "Десктоп для macOS, Windows и Linux. Агенты работают с вашим кодом, Git, терминалом и Docker. Модель любая, чаты и ключи API хранятся у вас.",
     shortDescription:
@@ -186,7 +186,7 @@ export const translations: Readonly<Record<Locale, Translation>> = {
       "Десктопный клиент для компаний и команд. Агенты читают и правят открытый проект, работают с Git, терминалом и Docker, ходят в облачную или локальную модель. Чаты и ключи API остаются на компьютере.",
     headerDownload: "Скачать",
     headerGithub: "GitHub",
-    heroTitle: "Мультиагентная среда разработки",
+    heroTitle: "Агентная среда разработки",
     heroSubtitle:
       "Единое пространство для проекта, окружения, моделей, пайплайнов и оркестрации агентов",
     betaBadge: "beta",
