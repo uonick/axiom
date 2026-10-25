@@ -30,6 +30,13 @@ const verticalFade: readonly FadeStop[] = [
   { at: 1, alpha: 0 },
 ]
 
+const TEXT_DIM = 0.34
+const TEXT_CENTER_X = 0.32
+const TEXT_CENTER_Y = 0.15
+const TEXT_RADIUS_X = 0.4
+const TEXT_RADIUS_Y = 0.13
+const TEXT_DIM_REACH = 0.4
+
 const lightDot: Rgb = { red: 15, green: 23, blue: 42, alpha: 0.16 }
 const darkDot: Rgb = { red: 242, green: 243, blue: 244, alpha: 0.14 }
 
@@ -48,9 +55,13 @@ function sampleFade(stops: readonly FadeStop[], ratio: number): number {
   return stops[stops.length - 1]?.alpha ?? 0
 }
 
-function fieldAlpha(y: number, height: number): number {
-  if (height <= 0) return 0
-  return sampleFade(verticalFade, y / height)
+function fieldAlpha(x: number, y: number, width: number, height: number): number {
+  if (width <= 0 || height <= 0) return 0
+  const xRatio = x / width
+  const yRatio = y / height
+  const distance = Math.hypot((xRatio - TEXT_CENTER_X) / TEXT_RADIUS_X, (yRatio - TEXT_CENTER_Y) / TEXT_RADIUS_Y)
+  const textFade = distance <= TEXT_DIM_REACH ? TEXT_DIM : distance >= 1 ? 1 : TEXT_DIM + (1 - TEXT_DIM) * ((distance - TEXT_DIM_REACH) / (1 - TEXT_DIM_REACH))
+  return sampleFade(verticalFade, yRatio) * textFade
 }
 
 function parseRgb(value: string): Rgb | null {
@@ -130,7 +141,7 @@ export function mountHeroDotGrid(section: HTMLElement): void {
         const dotRow = row + rowOffset
         if (dotColumn < 0 || dotRow < 0) continue
         const dotOrigin = origin(dotColumn, dotRow)
-        if (fieldAlpha(dotOrigin.y, viewHeight) <= 0) continue
+        if (fieldAlpha(dotOrigin.x, dotOrigin.y, viewWidth, viewHeight) <= 0) continue
         const deltaX = pointerX - dotOrigin.x
         const deltaY = pointerY - dotOrigin.y
         const distance = Math.hypot(deltaX, deltaY)
@@ -180,7 +191,7 @@ export function mountHeroDotGrid(section: HTMLElement): void {
     const litAlpha = Math.min(0.92, dotColor.alpha + LIT_ALPHA_BOOST)
     for (const pulled of pulledDots.values()) {
       const dotOrigin = origin(pulled.column, pulled.row)
-      const mask = fieldAlpha(dotOrigin.y, viewHeight)
+      const mask = fieldAlpha(dotOrigin.x, dotOrigin.y, viewWidth, viewHeight)
       if (mask <= 0) continue
       context.fillStyle = coverColor
       context.globalAlpha = 1

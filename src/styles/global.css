@@ -142,8 +142,14 @@ h2.font-mono {
   pointer-events: none;
   background-image: radial-gradient(circle, var(--hero-grid-dot) 1px, transparent 1px);
   background-size: 1.25rem 1.25rem;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 38%, transparent 68%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 38%, transparent 68%);
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, #000 14%, #000 38%, transparent 68%),
+    radial-gradient(ellipse 40% 13% at 32% 15%, rgb(0 0 0 / 0.34) 0%, rgb(0 0 0 / 0.34) 40%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, #000 14%, #000 38%, transparent 68%),
+    radial-gradient(ellipse 40% 13% at 32% 15%, rgb(0 0 0 / 0.34) 0%, rgb(0 0 0 / 0.34) 40%, #000 100%);
+  mask-composite: intersect;
 }
 
 @variant dark {
