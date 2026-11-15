@@ -18,6 +18,16 @@
   --color-accent: #3d9aff;
   --color-accent-ink: #7ec0ff;
   --color-red: #ee5c61;
+  --color-tone-orange: #ea580c;
+  --color-tone-orange-tint: #ea580c1f;
+  --color-tone-green: #16a34a;
+  --color-tone-green-tint: #16a34a1f;
+  --color-tone-purple: #9333ea;
+  --color-tone-purple-tint: #9333ea1f;
+  --color-tone-teal: #0891b2;
+  --color-tone-teal-tint: #0891b21f;
+  --color-tone-blue: #2563eb;
+  --color-tone-blue-tint: #2563eb1f;
   --color-one-dark: #282c34;
   --color-one-dark-raised: #333842;
 
@@ -152,6 +162,21 @@ h2.font-mono {
     linear-gradient(to bottom, transparent 0%, #000 14%, #000 38%, transparent 68%),
     radial-gradient(ellipse 40% 13% at 32% 15%, rgb(0 0 0 / 0.34) 0%, rgb(0 0 0 / 0.34) 40%, #000 100%);
   mask-composite: intersect;
+}
+
+@variant dark {
+  :root {
+    --color-tone-orange: #d19a66;
+    --color-tone-orange-tint: #d19a6624;
+    --color-tone-green: #98c379;
+    --color-tone-green-tint: #98c37924;
+    --color-tone-purple: #c678dd;
+    --color-tone-purple-tint: #c678dd24;
+    --color-tone-teal: #56b6c2;
+    --color-tone-teal-tint: #56b6c224;
+    --color-tone-blue: #3d9aff;
+    --color-tone-blue-tint: #3d9aff29;
+  }
 }
 
 @variant dark {

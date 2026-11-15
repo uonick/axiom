@@ -1,34 +1,56 @@
 ---
-import type { ProviderKey } from '../site.config'
-import anthropic from '../assets/providers/anthropic.svg'
-import openai from '../assets/providers/openai.svg'
-import grok from '../assets/providers/grok.svg'
-import google from '../assets/providers/google.svg'
-import qwen from '../assets/providers/qwen.svg'
-import deepseek from '../assets/providers/deepseek.svg'
-import openrouter from '../assets/providers/openrouter.svg'
-import ollama from '../assets/providers/ollama.svg'
+import { providerNames, type ProviderKey } from '../site.config'
 import local from '../assets/providers/local.svg'
 import custom from '../assets/providers/custom.svg'
 
 type Props = Readonly<{ name: ProviderKey }>
 
+type ProviderTone = 'orange' | 'green' | 'purple' | 'teal' | 'blue'
+
 const { name } = Astro.props
 
-const icons = {
-  anthropic,
-  openai,
-  grok,
-  google,
-  qwen,
-  deepseek,
-  openrouter,
-  ollama,
+const providerTones: Readonly<Record<ProviderKey, ProviderTone>> = {
+  anthropic: 'orange',
+  openai: 'green',
+  grok: 'blue',
+  google: 'teal',
+  qwen: 'purple',
+  deepseek: 'blue',
+  openrouter: 'purple',
+  ollama: 'teal',
+  local: 'green',
+  custom: 'orange',
+}
+
+const providerGlyphs: Readonly<Record<ProviderKey, typeof local | null>> = {
+  anthropic: null,
+  openai: null,
+  grok: null,
+  google: null,
+  qwen: null,
+  deepseek: null,
+  openrouter: null,
+  ollama: null,
   local,
   custom,
-} satisfies Record<ProviderKey, typeof anthropic>
+}
 
-const Icon = icons[name]
+const tone = providerTones[name]
+const Glyph = providerGlyphs[name]
 ---
 
-<Icon class="size-6 shrink-0" aria-hidden="true" />
+<span
+  class:list={[
+    'flex size-8 shrink-0 items-center justify-center rounded-control font-mono text-sm font-semibold',
+    {
+      'bg-tone-orange-tint text-tone-orange': tone === 'orange',
+      'bg-tone-green-tint text-tone-green': tone === 'green',
+      'bg-tone-purple-tint text-tone-purple': tone === 'purple',
+      'bg-tone-teal-tint text-tone-teal': tone === 'teal',
+      'bg-tone-blue-tint text-tone-blue': tone === 'blue',
+    },
+  ]}
+  aria-hidden="true"
+>
+  {Glyph ? <Glyph class="size-4" /> : providerNames[name].charAt(0)}
+</span>
